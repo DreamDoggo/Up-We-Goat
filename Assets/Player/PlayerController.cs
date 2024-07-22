@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] KeyCode MoveLeftKey;
+    [SerializeField] KeyCode MoveLeftKey = KeyCode.A;
+    [SerializeField] KeyCode MoveRightKey = KeyCode.D;
     [SerializeField] float MoveSpeed;
 
     // Start is called before the first frame update
@@ -21,6 +22,10 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateMovement() 
     {
-        if (Input.GetKey)
+
+        if (Input.GetKey(MoveLeftKey)) 
+        {
+            
+        }
     }
 }
