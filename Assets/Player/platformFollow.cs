@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathScript : MonoBehaviour
+public class platformFollow : MonoBehaviour
 {
     [SerializeField] GameObject player;
     Vector3 playerPrevPos;
