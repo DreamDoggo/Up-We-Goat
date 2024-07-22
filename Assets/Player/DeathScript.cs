@@ -5,16 +5,22 @@ using UnityEngine;
 public class DeathScript : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    float prevPos;
-    float currentPos;
+    Vector3 playerPrevPos;
+    // Saves player position on start then changes if different -5 from currentPos
+    Vector3 currentPos;
+    // Saves current position of the platform
+    public float distance = 5;
+    // Distance between the player and death platform
+
     void Start(){
-        prevPos = player.transform.position.y;
+        playerPrevPos = player.transform.position;
+        currentPos = gameObject.transform.position;
     }
 
     void Update(){
-        if (currentPos != prevPos){
-            gameObject.transform.y = currentPos + prevPos;
-            currentPos = prevPos;
+        if ((playerPrevPos.y - distance) > currentPos.y){
+            transform.position = new Vector3(currentPos.x, playerPrevPos.y - distance, currentPos.z);
+            currentPos = gameObject.transform.position;
         }
     }
 }
