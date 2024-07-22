@@ -38,4 +38,9 @@ public class PlayerController : MonoBehaviour
             RefSprite.flipX = false;
         }
     }
+    void OnTriggerEnter2D(Collider2D coll){
+        if(coll.tag == "obs"){
+            Destroy(gameObject);
+        }
+    }
 }
