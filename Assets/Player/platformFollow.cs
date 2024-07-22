@@ -13,11 +13,11 @@ public class platformFollow : MonoBehaviour
     // Distance between the player and death platform
 
     void Start(){
-        playerPrevPos = player.transform.position;
         currentPos = gameObject.transform.position;
     }
 
     void Update(){
+        playerPrevPos = player.transform.position;
         if ((playerPrevPos.y - distance) > currentPos.y){
             transform.position = new Vector3(currentPos.x, playerPrevPos.y - distance, currentPos.z);
             currentPos = gameObject.transform.position;
