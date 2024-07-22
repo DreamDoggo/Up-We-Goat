@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class DeathScript : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D coll){
-        if(coll.tag == "obs"){
-            Destroy(gameObject);
+    [SerializeField] GameObject player;
+    float prevPos;
+    float currentPos;
+    void Start(){
+        prevPos = player.transform.position.y;
+    }
+
+    void Update(){
+        if (currentPos != prevPos){
+            gameObject.transform.y = currentPos + prevPos;
+            currentPos = prevPos;
         }
     }
 }
