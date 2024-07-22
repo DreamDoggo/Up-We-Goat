@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Keybinds")]
     [SerializeField] KeyCode MoveLeftKey = KeyCode.A;
     [SerializeField] KeyCode MoveRightKey = KeyCode.D;
+    [SerializeField] KeyCode JumpKey = KeyCode.Space;
+
     [SerializeField] float MoveSpeed;
+
+    [SerializeField] SpriteRenderer RefSprite;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +23,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        UpdateMovement();
     }
 
     public void UpdateMovement() 
@@ -25,7 +31,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(MoveLeftKey)) 
         {
-            
+            RefSprite.flipX = true;
+        }
+        if (Input.GetKey(MoveRightKey)) 
+        {
+            RefSprite.flipX = false;
         }
     }
 }
