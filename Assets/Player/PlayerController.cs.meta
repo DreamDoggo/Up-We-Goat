@@ -3,7 +3,13 @@ guid: 88a4d60329a22d84eaf2bab714d4ba61
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RefSprite: {instanceID: 0}
+  - RefRigidBody: {instanceID: 0}
+  - RefCollider: {instanceID: 0}
+  - GroundCheck: {instanceID: 0}
+  - JumpSource: {instanceID: 0}
+  - JumpSFX: {fileID: 8300000, guid: a539fc34f8409884e84c33e870147365, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
