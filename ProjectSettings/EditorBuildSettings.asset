@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: ad2ce6ae253625743aef47ade59a10fb
+  - enabled: 1
+    path: Assets/Scenes/sketch-leap.unity
+    guid: 57628a873ca8d4240b6afb85df589c32
   m_configObjects: {}
