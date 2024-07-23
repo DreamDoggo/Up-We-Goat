@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Keybinds")]
     [SerializeField] KeyCode MoveLeftKey = KeyCode.A;
-    [SerializeField] KeyCode AltMoveLeftKey = KeyCode.LeftArrow;
     [SerializeField] KeyCode MoveRightKey = KeyCode.D;
-    [SerializeField] KeyCode AltMoveRightKey = KeyCode.RightArrow;
     [SerializeField] KeyCode JumpKey = KeyCode.Space;
+    [SerializeField] KeyCode AltMoveLeftKey = KeyCode.LeftArrow;
+    [SerializeField] KeyCode AltMoveRightKey = KeyCode.RightArrow;
     [SerializeField] KeyCode AltJumpKey = KeyCode.W;
 
     [Header("Horizontal Movement")]
