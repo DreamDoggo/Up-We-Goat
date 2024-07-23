@@ -9,37 +9,108 @@ public class PlayerController : MonoBehaviour
     [SerializeField] KeyCode MoveRightKey = KeyCode.D;
     [SerializeField] KeyCode JumpKey = KeyCode.Space;
 
-    [SerializeField] float MoveSpeed;
+    [Header("Horizontal Movement")]
+    [Range(2f, 30f)]
+    [SerializeField] float MoveSpeed = 8f;
 
+    [Tooltip("The player cannot exceed this speed horizontally")]
+    [Range(2f, 30f)]
+    [SerializeField] float MaximumVelocity = 5f;
+
+    [Tooltip("How quickly to slow the player down after movement keys are not held down" +
+        "Larger values produce larger results")]
+    [Range(0f, 1f)]
+    [SerializeField] float MovementDamping = .95f;
+
+    [Header("Jump")]
+    [Range(2f, 60f)]
+    [SerializeField] float JumpStrength = 10f;
+
+    [Tooltip("How much to lower the player's jump by if they let go of the jump key early" +
+        "Larger values produce larger results")]
+    [Range(0f, 1f)]
+    [SerializeField] float JumpDamping = .5f;
+
+    [Header("References")]
     [SerializeField] SpriteRenderer RefSprite;
+    [SerializeField] Rigidbody2D RefRigidBody;
+    [SerializeField] BoxCollider2D RefCollider;
 
+    [Header("Misc")]
+    [Tooltip("Tag that hazardous objects will be marked with")]
+    [SerializeField] string HazardTag = "obs";
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    [Tooltip("Where on the player should they check to see if they are grounded")]
+    [SerializeField] Transform GroundCheck;
 
-    }
+    [Tooltip("What layer is considered to be ground")]
+    [SerializeField] LayerMask GroundLayer;
 
     // Update is called once per frame
     void Update()
     {
-        UpdateMovement();
+        Move();
+        Jump();
     }
 
-    public void UpdateMovement() 
+    public void Move() 
     {
+        // Check to see if we are holding left or right
+        Vector2 horizontalInputs = Vector2.zero;
 
         if (Input.GetKey(MoveLeftKey)) 
         {
+            horizontalInputs += Vector2.left;
             RefSprite.flipX = true;
         }
         if (Input.GetKey(MoveRightKey)) 
         {
+            horizontalInputs += Vector2.right;
             RefSprite.flipX = false;
         }
+        horizontalInputs.Normalize();
+
+        // Move the player in the direction
+        RefRigidBody.AddForce(horizontalInputs * MoveSpeed);
+
+        // Cap the player's velocity if it exceeds our maximum
+        if (RefRigidBody.velocity.magnitude > MaximumVelocity) 
+        {
+            RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.normalized.x * MaximumVelocity, RefRigidBody.velocity.y);
+        }
+
+        // Slow they player down if we stop receiving inputs
+        if (horizontalInputs.sqrMagnitude <= 0.1f) 
+        {
+            RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x * MovementDamping, RefRigidBody.velocity.y);
+        }
     }
+
+    // If on the ground and pressing jump, jump as normal
+    // If they are jumping and let go of jump early, damp their upward velocity 
+    public void Jump() 
+    {
+        if (Input.GetKey(JumpKey) && IsGrounded()) 
+        {
+            RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x, JumpStrength);
+        }
+
+        if (Input.GetKeyUp(JumpKey) && RefRigidBody.velocity.y > 0f) 
+        {
+            RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x, RefRigidBody.velocity.y * JumpDamping);
+        }
+
+    }
+
+    // If the player is close enough to the ground, consider them to be grounded
+    private bool IsGrounded() 
+    {
+        return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
+    }
+
     void OnTriggerEnter2D(Collider2D coll){
-        if(coll.tag == "obs"){
+        if (coll.tag == HazardTag)
+        {
             Destroy(gameObject);
         }
     }
