@@ -525,7 +525,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   JumpSource: {fileID: 1441368696}
-  JumpSFX: {fileID: 8300000, guid: a539fc34f8409884e84c33e870147365, type: 3}
+  JumpSFX: {fileID: 8300000, guid: 88b25ffe71912694d870041e1d22e201, type: 3}
 --- !u!82 &1441368696
 AudioSource:
   m_ObjectHideFlags: 0
@@ -536,9 +536,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 88b25ffe71912694d870041e1d22e201, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.12
   m_Pitch: 1
   Loop: 0
   Mute: 0
