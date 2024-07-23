@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] KeyCode MoveRightKey = KeyCode.D;
     [SerializeField] KeyCode AltMoveRightKey = KeyCode.RightArrow;
     [SerializeField] KeyCode JumpKey = KeyCode.Space;
+    [SerializeField] KeyCode AltJumpKey = KeyCode.W;
 
     [Header("Horizontal Movement")]
     [Range(2f, 30f)]
@@ -48,6 +49,9 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("What layer is considered to be ground")]
     [SerializeField] LayerMask GroundLayer;
+    
+    [SerializeField] AudioSource JumpSource;
+    [SerializeField] AudioClip JumpSFX;
 
     // Update is called once per frame
     void Update()
@@ -61,12 +65,12 @@ public class PlayerController : MonoBehaviour
         // Check to see if we are holding left or right
         Vector2 horizontalInputs = Vector2.zero;
 
-        if (Input.GetKey(MoveLeftKey)) 
+        if (Input.GetKey(MoveLeftKey) || Input.GetKey(AltMoveLeftKey)) 
         {
             horizontalInputs += Vector2.left;
             RefSprite.flipX = true;
         }
-        if (Input.GetKey(MoveRightKey)) 
+        if (Input.GetKey(MoveRightKey) || Input.GetKey(AltMoveRightKey)) 
         {
             horizontalInputs += Vector2.right;
             RefSprite.flipX = false;
@@ -92,17 +96,18 @@ public class PlayerController : MonoBehaviour
     // If on the ground and pressing jump, jump as normal
     // If they are jumping and let go of jump early, damp their upward velocity 
 
-    [SerializeField] AudioSource JumpSource;
-    [SerializeField] AudioClip JumpSFX;
     public void Jump() 
     {
-        if (Input.GetKey(JumpKey) && IsGrounded()) 
+        if ((Input.GetKey(JumpKey) || Input.GetKey(AltJumpKey)) && IsGrounded()) 
         {
             RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x, JumpStrength);
-            JumpSource.PlayOneShot(JumpSFX);
+            if (JumpSource.isPlaying == false)
+            {
+                JumpSource.PlayOneShot(JumpSFX);
+            }
         }
 
-        if (Input.GetKeyUp(JumpKey) && RefRigidBody.velocity.y > 0f) 
+        if ((Input.GetKeyUp(JumpKey) || Input.GetKeyUp(AltJumpKey)) && RefRigidBody.velocity.y > 0f) 
         {
             RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x, RefRigidBody.velocity.y * JumpDamping);
         }
