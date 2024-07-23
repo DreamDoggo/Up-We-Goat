@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float MaximumVelocity = 5f;
 
     [Tooltip("How quickly to slow the player down after movement keys are not held down" +
-        "Larger values produce larger results")]
-    [Range(0f, 1f)]
+        "Lower values produce larger results")]
+    [Range(.1f, 1f)]
     [SerializeField] float MovementDamping = .95f;
 
     [Header("Jump")]
@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float JumpStrength = 10f;
 
     [Tooltip("How much to lower the player's jump by if they let go of the jump key early" +
-        "Larger values produce larger results")]
-    [Range(0f, 1f)]
+        "Lower values produce larger results")]
+    [Range(.1f, 1f)]
     [SerializeField] float JumpDamping = .5f;
 
     [Header("References")]
