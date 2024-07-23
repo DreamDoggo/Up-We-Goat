@@ -91,11 +91,15 @@ public class PlayerController : MonoBehaviour
 
     // If on the ground and pressing jump, jump as normal
     // If they are jumping and let go of jump early, damp their upward velocity 
+
+    [SerializeField] AudioSource JumpSource;
+    [SerializeField] AudioClip JumpSFX;
     public void Jump() 
     {
         if (Input.GetKey(JumpKey) && IsGrounded()) 
         {
             RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x, JumpStrength);
+            JumpSource.PlayOneShot(JumpSFX);
         }
 
         if (Input.GetKeyUp(JumpKey) && RefRigidBody.velocity.y > 0f) 
