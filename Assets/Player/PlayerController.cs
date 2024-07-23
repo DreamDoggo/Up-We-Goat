@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump() 
     {
-        if ((Input.GetKey(JumpKey) || Input.GetKey(AltJumpKey)) && IsGrounded()) 
+        if ((Input.GetKeyDown(JumpKey) || Input.GetKey(AltJumpKey)) && IsGrounded()) 
         {
             RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x, JumpStrength);
             if (JumpSource.isPlaying == false)
