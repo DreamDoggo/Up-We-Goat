@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     [Header("Misc")]
     [Tooltip("How many collectable thingies the player has collected")]
     [SerializeField] int grabby = 0;
+    [Tooltip("How much time it takes for the player to die")]
+    [Range(0f, 10f)]
+    [SerializeField] float timeBeforeDeath = 5;
     [Tooltip("Tag that hazardous objects will be marked with")]
     [SerializeField] string HazardTag = "obs";
     [Tooltip("Tag that icey objects will be marked with")]
@@ -149,7 +152,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D coll){
         if (coll.tag == HazardTag)
         {
-            SceneManager.LoadScene("GameOver");
+            StartCoroutine(death());
         }
         else if (coll.tag == IceyTag){
             floatTemp = MovementDamping;
@@ -167,5 +170,10 @@ public class PlayerController : MonoBehaviour
         if (coll.tag == IceyTag){
             MovementDamping = floatTemp;
         }
+    }
+
+    IEnumerator death(){
+        yield return new WaitForSeconds(timeBeforeDeath);
+        SceneManager.LoadScene("GameOver");
     }
 }
