@@ -694,14 +694,18 @@ MonoBehaviour:
   RefSprite: {fileID: 1441368694}
   RefRigidBody: {fileID: 1441368693}
   RefCollider: {fileID: 1441368692}
+  CollectionText: {fileID: 0}
+  grabby: 0
   HazardTag: obs
   IceyTag: slippery
+  GrabTag: grab
   GroundCheck: {fileID: 1212472502}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
   JumpSource: {fileID: 1441368696}
   JumpSFX: {fileID: 8300000, guid: db6edef3c0f6cb84e95f83ae22cdd63d, type: 3}
+  animator: {fileID: 0}
 --- !u!82 &1441368696
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1035,7 +1039,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatformPrefab: {fileID: 2447340275648093585, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
+  CollectablePrefab: {fileID: 6875637389228419335, guid: acb36c24a6031414cb805a5b4ded972f, type: 3}
   PlatformCount: 60
+  coinDistance: 1.5
 --- !u!4 &2134877458
 Transform:
   m_ObjectHideFlags: 0
