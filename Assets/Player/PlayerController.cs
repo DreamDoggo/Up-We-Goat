@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,11 +45,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer RefSprite;
     [SerializeField] Rigidbody2D RefRigidBody;
     [SerializeField] BoxCollider2D RefCollider;
+    [SerializeField] Text CollectionText;
 
     [Header("Misc")]
+    [Tooltip("How many collectable thingies the player has collected")]
+    [SerializeField] int grabby = 0;
     [Tooltip("Tag that hazardous objects will be marked with")]
     [SerializeField] string HazardTag = "obs";
+    [Tooltip("Tag that icey objects will be marked with")]
     [SerializeField] string IceyTag = "slippery";
+    [Tooltip("Tag that grabbable objects will be marked with")]
+    [SerializeField] string GrabTag = "grab";
 
     [Tooltip("Where on the player should they check to see if they are grounded")]
     [SerializeField] Transform GroundCheck;
@@ -59,6 +66,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource JumpSource;
     [SerializeField] AudioClip JumpSFX;
     float floatTemp;
+
+    //
+    public Animator animator;
 
     private void Start()
     {
@@ -134,6 +144,8 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
     }
 
+    [SerializeField] AudioClip GoatSFX;
+    [SerializeField] AudioSource GoatSource;
     void OnTriggerEnter2D(Collider2D coll){
         if (coll.tag == HazardTag)
         {
@@ -142,7 +154,13 @@ public class PlayerController : MonoBehaviour
         else if (coll.tag == IceyTag){
             floatTemp = MovementDamping;
             MovementDamping = IceyMovementDamping;
-
+        }
+        else if (coll.tag == GrabTag){
+            grabby++;
+            CollectionText.text = grabby.ToString();
+            AudioSource.PlayClipAtPoint(GoatSFX, transform.position);
+            GoatSource.PlayOneShot(GoatSFX);
+            Destroy (coll.gameObject);
         }
     }
     void OnTriggerExit2D(Collider2D coll){

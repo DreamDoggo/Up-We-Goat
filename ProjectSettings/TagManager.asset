@@ -6,6 +6,7 @@ TagManager:
   tags:
   - obs
   - slippery
+  - grab
   layers:
   - Default
   - TransparentFX

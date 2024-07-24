@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject PlatformPrefab;
+    public GameObject CollectablePrefab;
     [SerializeField] int PlatformCount = 300;
+    [SerializeField] float coinDistance = 1.5f;
 
 
     // Start is called before the first frame update
@@ -18,6 +20,10 @@ public class GameManager : MonoBehaviour
             spawnPosition.y += Random.Range(1.5f, 2f);
             spawnPosition.x = Random.Range(-5f, 5f);
             Instantiate(PlatformPrefab, spawnPosition, Quaternion.identity);
+            var randomInt = Random.Range(0,2);
+            if (randomInt > 0){
+                Instantiate(CollectablePrefab, new Vector2(spawnPosition.x,spawnPosition.y+coinDistance), Quaternion.identity);
+            }
         }
     }
 
