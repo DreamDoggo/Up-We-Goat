@@ -84,7 +84,8 @@ public class PlayerController : MonoBehaviour
         horizontalInputs.Normalize();
 
         // Move the player in the direction
-        RefRigidBody.AddForce(horizontalInputs * MoveSpeed);
+        //RefRigidBody.AddForce(horizontalInputs * MoveSpeed);
+        RefRigidBody.velocity = new Vector2(horizontalInputs.x * MoveSpeed, RefRigidBody.velocity.y);
 
         // Cap the player's velocity if it exceeds our maximum
         if (RefRigidBody.velocity.magnitude > MaximumVelocity) 
