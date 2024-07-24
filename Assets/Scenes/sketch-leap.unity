@@ -485,7 +485,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   JumpSource: {fileID: 1441368696}
-  JumpSFX: {fileID: 8300000, guid: 88b25ffe71912694d870041e1d22e201, type: 3}
+  JumpSFX: {fileID: 8300000, guid: db6edef3c0f6cb84e95f83ae22cdd63d, type: 3}
 --- !u!82 &1441368696
 AudioSource:
   m_ObjectHideFlags: 0
