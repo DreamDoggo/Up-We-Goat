@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] KeyCode AltJumpKey = KeyCode.W;
 
     [Header("Horizontal Movement")]
-    [Range(2f, 30f)]
+    [Range(2f, 60f)]
     [SerializeField] float MoveSpeed = 8f;
 
     [Tooltip("The player cannot exceed this speed horizontally")]
-    [Range(2f, 30f)]
+    [Range(2f, 60f)]
     [SerializeField] float MaximumVelocity = 5f;
 
     [Tooltip("How quickly to slow the player down after movement keys are not held down" +
@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] AudioSource JumpSource;
     [SerializeField] AudioClip JumpSFX;
+
+    private void Start()
+    {
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 60;
+    }
 
     // Update is called once per frame
     void Update()
@@ -89,7 +95,7 @@ public class PlayerController : MonoBehaviour
         // Slow they player down if we stop receiving inputs
         if (horizontalInputs.sqrMagnitude <= 0.1f) 
         {
-            RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x * MovementDamping, RefRigidBody.velocity.y);
+            RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x * MovementDamping * Time.deltaTime, RefRigidBody.velocity.y);
         }
     }
 
@@ -109,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
         if ((Input.GetKeyUp(JumpKey) || Input.GetKeyUp(AltJumpKey)) && RefRigidBody.velocity.y > 0f) 
         {
-            RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x, RefRigidBody.velocity.y * JumpDamping);
+            RefRigidBody.velocity *= new Vector2(1, JumpDamping);
         }
 
     }
