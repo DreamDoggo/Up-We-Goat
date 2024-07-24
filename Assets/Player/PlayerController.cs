@@ -23,8 +23,13 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("How quickly to slow the player down after movement keys are not held down" +
         "Lower values produce larger results")]
-    [Range(.1f, 1f)]
+    [Range(-1f, 3f)]
     [SerializeField] float MovementDamping = .95f;
+    
+    [Tooltip("How quickly to slow the player down after movement keys are not held down" +
+        "whilst on icey platforms")]
+    [Range(-1, 3f)]
+    [SerializeField] float IceyMovementDamping = 1f;
 
     [Header("Jump")]
     [Range(2f, 60f)]
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
     [Header("Misc")]
     [Tooltip("Tag that hazardous objects will be marked with")]
     [SerializeField] string HazardTag = "obs";
+    [SerializeField] string IceyTag = "slippery";
 
     [Tooltip("Where on the player should they check to see if they are grounded")]
     [SerializeField] Transform GroundCheck;
@@ -52,6 +58,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] AudioSource JumpSource;
     [SerializeField] AudioClip JumpSFX;
+    float floatTemp;
 
     private void Start()
     {
@@ -131,6 +138,16 @@ public class PlayerController : MonoBehaviour
         if (coll.tag == HazardTag)
         {
             SceneManager.LoadScene("GameOver");
+        }
+        else if (coll.tag == IceyTag){
+            floatTemp = MovementDamping;
+            MovementDamping = IceyMovementDamping;
+
+        }
+    }
+    void OnTriggerExit2D(Collider2D coll){
+        if (coll.tag == IceyTag){
+            MovementDamping = floatTemp;
         }
     }
 }
