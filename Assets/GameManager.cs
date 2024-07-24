@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] float coinDistance = 1.5f;
     [SerializeField] float PlatformSpawnHeight = 1.75f;
 
+    [Tooltip("What is the chance out of 100 that a collectable will spawn on any given platform")]
+    [Range(1, 100)]
+    [SerializeField] int CollectableSpawnChance = 33;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +26,9 @@ public class GameManager : MonoBehaviour
             spawnPosition.x = Random.Range(-5f, 5f);
             Instantiate(PlatformPrefab, spawnPosition, Quaternion.identity);
             
-            var randomInt = Random.Range(0,2);
-            if (randomInt > 0){
+            var randomInt = Random.Range(1,101);
+            if (randomInt <= CollectableSpawnChance)
+            {
                 Instantiate(CollectablePrefab, new Vector2(spawnPosition.x,spawnPosition.y+coinDistance), Quaternion.identity);
             }
         }
