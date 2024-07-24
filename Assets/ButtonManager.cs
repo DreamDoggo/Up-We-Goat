@@ -27,7 +27,7 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("TipsScreen");
     }
 
-    public void GoToMain()
+    public void GoToMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
