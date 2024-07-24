@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip JumpSFX;
     float floatTemp;
 
+    //
+    public Animator animator;
+
     private void Start()
     {
         QualitySettings.vSyncCount = 1;
