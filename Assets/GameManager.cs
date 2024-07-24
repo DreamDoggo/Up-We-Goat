@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameObject PlatformPrefab;
     [SerializeField] int PlatformCount = 300;
 
+
     // Start is called before the first frame update
     void Start()
     {
