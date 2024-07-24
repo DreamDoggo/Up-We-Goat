@@ -17,7 +17,7 @@ public class randomFallingObstacles : MonoBehaviour
     [SerializeField] float timer;
     void Update(){
         timer = timer + Time.deltaTime;
-        Vector3 point = new Vector3(Random.Range(MinX, MaxX),Player.transform.position.y+DistanceY,Player.transform.position.z);
+        Vector3 point = new Vector3(Random.Range(MinX, MaxX), Player.transform.position.y + DistanceY, Player.transform.position.z);
         if (timer >= DropTimer){
             Instantiate(Obstacle, point, Player.transform.rotation);
             timer = 0;

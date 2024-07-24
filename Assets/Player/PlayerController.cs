@@ -146,6 +146,9 @@ public class PlayerController : MonoBehaviour
     {
         return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
     }
+
+    [SerializeField] AudioClip GoatSFX;
+    [SerializeField] AudioSource GoatSource;
     void OnTriggerEnter2D(Collider2D coll){
         if (coll.tag == HazardTag)
         {
@@ -157,7 +160,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (coll.tag == GrabTag){
             grabby++;
-            CollectionText.text = grabby.ToString(); 
+            CollectionText.text = grabby.ToString();
+            AudioSource.PlayClipAtPoint(GoatSFX, transform.position);
+            GoatSource.PlayOneShot(GoatSFX);
             Destroy (coll.gameObject);
         }
     }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int PlatformCount = 300;
     [SerializeField] float coinDistance = 1.5f;
 
+
     // Start is called before the first frame update
     void Start()
     {
