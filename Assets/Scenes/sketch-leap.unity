@@ -329,56 +329,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &802501147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2447340275648093585, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-  m_PrefabInstance: {fileID: 929605551}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &802501152
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802501147}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.036396414}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.97, y: 0.61}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.97, y: 0.68279284}
-  m_EdgeRadius: 0
 --- !u!1001 &929605551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -392,24 +342,8 @@ PrefabInstance:
       value: Icey Platform
       objectReference: {fileID: 0}
     - target: {fileID: 4469905181774091373, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      propertyPath: m_Size.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469905181774091373, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      propertyPath: m_Size.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469905181774091373, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469905181774091373, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169919683773504578, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      propertyPath: m_FlipX
-      value: 0
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7682006360501412001, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -454,10 +388,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2447340275648093585, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 802501152}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
 --- !u!1 &1008110887
 GameObject:
@@ -748,7 +679,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 2
-  m_Material: {fileID: 6200000, guid: 86ffbd436abf30444bae2992e2c43d69, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -831,7 +762,7 @@ MonoBehaviour:
   AltJumpKey: 119
   MoveSpeed: 10
   MaximumVelocity: 9
-  MovementDamping: 0.95
+  MovementDamping: 1
   IceyMovementDamping: 1
   JumpStrength: 10
   JumpDamping: 0.5
@@ -839,6 +770,8 @@ MonoBehaviour:
   RefRigidBody: {fileID: 1441368693}
   RefCollider: {fileID: 1441368692}
   CollectionText: {fileID: 2118089918}
+  GoatSource: {fileID: 1441368697}
+  JumpSource: {fileID: 1441368696}
   grabby: 0
   timeBeforeDeath: 5
   HazardTag: obs
@@ -848,11 +781,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
-  JumpSource: {fileID: 1441368696}
   JumpSFX: {fileID: 8300000, guid: db6edef3c0f6cb84e95f83ae22cdd63d, type: 3}
+  GoatSFX: {fileID: 8300000, guid: 28e57bfd20393be4abcaf4f6fecac6a5, type: 3}
   animator: {fileID: 0}
-  GoatSFX: {fileID: 8300000, guid: 6ff21c63c8c35174581e5469cabc3ecd, type: 3}
-  GoatSource: {fileID: 1441368697}
 --- !u!82 &1441368696
 AudioSource:
   m_ObjectHideFlags: 0

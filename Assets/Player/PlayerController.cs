@@ -22,15 +22,15 @@ public class PlayerController : MonoBehaviour
     [Range(2f, 60f)]
     [SerializeField] float MaximumVelocity = 5f;
 
-    [Tooltip("How quickly to slow the player down after movement keys are not held down" +
+    /*[Tooltip("How quickly to slow the player down after movement keys are not held down" +
         "Lower values produce larger results")]
     [Range(-1f, 3f)]
-    [SerializeField] float MovementDamping = .95f;
+    [SerializeField] float MovementDamping = .95f;*/
     
     [Tooltip("How quickly to slow the player down after movement keys are not held down" +
         "whilst on icey platforms")]
-    [Range(-1, 3f)]
-    [SerializeField] float IceyMovementDamping = 1f;
+    [Range(1.1f, 5f)]
+    [SerializeField] float IceMoveSpeed = 1.2f;
 
     [Header("Jump")]
     [Range(2f, 60f)]
@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D RefRigidBody;
     [SerializeField] BoxCollider2D RefCollider;
     [SerializeField] Text CollectionText;
+    [SerializeField] AudioSource GoatSource;
+    [SerializeField] AudioSource JumpSource; 
 
     [Header("Misc")]
     [Tooltip("How many collectable thingies the player has collected")]
@@ -65,10 +67,13 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("What layer is considered to be ground")]
     [SerializeField] LayerMask GroundLayer;
-    
-    [SerializeField] AudioSource JumpSource;
+
+    [Header("Sound Effects")]
     [SerializeField] AudioClip JumpSFX;
+    [SerializeField] AudioClip GoatSFX;
+
     float floatTemp;
+    private bool OnIce;
 
     //
     public Animator animator;
@@ -104,8 +109,16 @@ public class PlayerController : MonoBehaviour
         horizontalInputs.Normalize();
 
         // Move the player in the direction
-        //RefRigidBody.AddForce(horizontalInputs * MoveSpeed);
-        RefRigidBody.velocity = new Vector2(horizontalInputs.x * MoveSpeed, RefRigidBody.velocity.y);
+        // Old force based code: RefRigidBody.AddForce(horizontalInputs * MoveSpeed);
+        if (OnIce) 
+        {
+            RefRigidBody.AddForce(horizontalInputs * MoveSpeed * 1.2f);
+        }
+        else 
+        {
+            RefRigidBody.velocity = new Vector2(horizontalInputs.x * MoveSpeed, RefRigidBody.velocity.y);
+        }
+
 
         // Cap the player's velocity if it exceeds our maximum
         if (RefRigidBody.velocity.magnitude > MaximumVelocity) 
@@ -114,9 +127,26 @@ public class PlayerController : MonoBehaviour
         }
 
         // Slow they player down if we stop receiving inputs
-        if (horizontalInputs.sqrMagnitude <= 0.1f) 
+        // Old forced based code:
+        /*if (horizontalInputs.sqrMagnitude <= 0.1f) 
         {
             RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x * MovementDamping * Time.deltaTime, RefRigidBody.velocity.y);
+        }*/
+        
+        float oldDrag = RefRigidBody.drag;
+        float oldMaxVelocity = MaximumVelocity; 
+
+        if (OnIce) 
+        {
+            //RefRigidBody.drag = 20f;
+            //MaximumVelocity *= 1.5f;
+            //Move
+            //RefRigidBody.velocity += new Vector2(2f * horizontalInputs.x, 0);
+        }
+        else 
+        {
+            RefRigidBody.drag = oldDrag;
+            MaximumVelocity = oldMaxVelocity;
         }
     }
 
@@ -147,16 +177,13 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
     }
 
-    [SerializeField] AudioClip GoatSFX;
-    [SerializeField] AudioSource GoatSource;
     void OnTriggerEnter2D(Collider2D coll){
         if (coll.tag == HazardTag)
         {
             StartCoroutine(death());
         }
         else if (coll.tag == IceyTag){
-            floatTemp = MovementDamping;
-            MovementDamping = IceyMovementDamping;
+            OnIce = true;
         }
         else if (coll.tag == GrabTag){
             grabby++;
@@ -168,7 +195,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D coll){
         if (coll.tag == IceyTag){
-            MovementDamping = floatTemp;
+            OnIce = false;
         }
     }
 
