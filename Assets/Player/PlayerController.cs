@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         // Old force based code: RefRigidBody.AddForce(horizontalInputs * MoveSpeed);
         if (OnIce) 
         {
-            RefRigidBody.AddForce(horizontalInputs * MoveSpeed * 1.2f);
+            RefRigidBody.AddForce(horizontalInputs * MoveSpeed * IceMoveSpeed);
         }
         else 
         {
