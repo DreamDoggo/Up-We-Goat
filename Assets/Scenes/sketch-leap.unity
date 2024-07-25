@@ -851,7 +851,7 @@ MonoBehaviour:
   JumpSource: {fileID: 1441368696}
   JumpSFX: {fileID: 8300000, guid: db6edef3c0f6cb84e95f83ae22cdd63d, type: 3}
   animator: {fileID: 0}
-  GoatSFX: {fileID: 8300000, guid: 6ff21c63c8c35174581e5469cabc3ecd, type: 3}
+  GoatSFX: {fileID: 8300000, guid: 28e57bfd20393be4abcaf4f6fecac6a5, type: 3}
   GoatSource: {fileID: 1441368697}
 --- !u!82 &1441368696
 AudioSource:
@@ -959,7 +959,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6ff21c63c8c35174581e5469cabc3ecd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 28e57bfd20393be4abcaf4f6fecac6a5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
