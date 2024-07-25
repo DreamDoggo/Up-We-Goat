@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1441368690}
-  distance: 2.6
+  distance: 4
 --- !u!4 &188873320
 Transform:
   m_ObjectHideFlags: 0
@@ -840,6 +840,7 @@ MonoBehaviour:
   RefCollider: {fileID: 1441368692}
   CollectionText: {fileID: 2118089918}
   grabby: 0
+  timeBeforeDeath: 5
   HazardTag: obs
   IceyTag: slippery
   GrabTag: grab
@@ -1546,6 +1547,8 @@ MonoBehaviour:
   CollectablePrefab: {fileID: 6875637389228419335, guid: acb36c24a6031414cb805a5b4ded972f, type: 3}
   PlatformCount: 60
   coinDistance: 1.5
+  PlatformSpawnHeight: 1.75
+  CollectableSpawnChance: 33
 --- !u!4 &2134877458
 Transform:
   m_ObjectHideFlags: 0
