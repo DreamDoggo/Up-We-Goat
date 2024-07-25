@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Tag that hazardous objects will be marked with")]
     [SerializeField] string HazardTag = "obs";
     [Tooltip("Tag that icey objects will be marked with")]
-    [SerializeField] string IceyTag = "slippery";
+    [SerializeField] string IcyTag = "slippery";
     [Tooltip("Tag that grabbable objects will be marked with")]
     [SerializeField] string GrabTag = "grab";
 
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(death());
         }
-        else if (coll.tag == IceyTag){
+        else if (coll.tag == IcyTag){
             OnIce = true;
         }
         else if (coll.tag == GrabTag){
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     void OnTriggerExit2D(Collider2D coll){
-        if (coll.tag == IceyTag){
+        if (coll.tag == IcyTag){
             OnIce = false;
         }
     }

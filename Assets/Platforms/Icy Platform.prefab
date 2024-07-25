@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4469905181774091373}
   - component: {fileID: 3926366617315147873}
   m_Layer: 6
-  m_Name: Icey Platform
+  m_Name: Icy Platform
   m_TagString: slippery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
