@@ -171,10 +171,12 @@ public class PlayerController : MonoBehaviour
         // Handle Coyote Time
         if (IsGrounded()) 
         {
+            RefAnimator.SetBool("isAirborne", false);
             CoyoteTimeCounter = CoyoteTime;
         }
         else 
         {
+            RefAnimator.SetBool("isAirborne", true);
             CoyoteTimeCounter -= Time.deltaTime;
         }
         
