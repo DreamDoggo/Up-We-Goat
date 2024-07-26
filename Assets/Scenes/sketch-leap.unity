@@ -735,9 +735,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 842f5a71b7049ce489e9dcaaca7659a5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b8208d3c688a35d4fbbb4354cb65934d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.42
+  m_Volume: 0.296
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1259,6 +1259,10 @@ PrefabInstance:
       propertyPath: CollectionText
       value: 
       objectReference: {fileID: 2118089918}
+    - target: {fileID: 976899955863777610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_Volume
+      value: 0.162
+      objectReference: {fileID: 0}
     - target: {fileID: 3941000375643947615, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1302,6 +1306,10 @@ PrefabInstance:
     - target: {fileID: 5195684520902433355, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6762362557789597419, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_Volume
+      value: 0.826
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
