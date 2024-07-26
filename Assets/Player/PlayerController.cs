@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int grabby = 0;
     [Tooltip("How much time it takes for the player to die")]
     [Range(0f, 10f)]
-    [SerializeField] float timeBeforeDeath = 5;
+    [SerializeField] float TimeBeforeDeath = 5;
     [Tooltip("Tag that hazardous objects will be marked with")]
     [SerializeField] string HazardTag = "obs";
     [Tooltip("Tag that icey objects will be marked with")]
@@ -145,22 +145,6 @@ public class PlayerController : MonoBehaviour
         {
             RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x * MovementDamping * Time.deltaTime, RefRigidBody.velocity.y);
         }*/
-        
-        float oldDrag = RefRigidBody.drag;
-        float oldMaxVelocity = MaximumVelocity; 
-
-        if (OnIce) 
-        {
-            //RefRigidBody.drag = 20f;
-            //MaximumVelocity *= 1.5f;
-            //Move
-            //RefRigidBody.velocity += new Vector2(2f * horizontalInputs.x, 0);
-        }
-        else 
-        {
-            RefRigidBody.drag = oldDrag;
-            MaximumVelocity = oldMaxVelocity;
-        }
     }
 
     // If on the ground and pressing jump, jump as normal
@@ -217,12 +201,14 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D coll){
         if (coll.tag == HazardTag)
         {
-            StartCoroutine(death());
+            StartCoroutine(Death());
         }
-        else if (coll.tag == IcyTag){
+        else if (coll.tag == IcyTag)
+        {
             OnIce = true;
         }
-        else if (coll.tag == GrabTag){
+        else if (coll.tag == GrabTag)
+        {
             grabby++;
             CollectionText.text = grabby.ToString();
             AudioSource.PlayClipAtPoint(CollectableSFX, transform.position);
@@ -231,13 +217,14 @@ public class PlayerController : MonoBehaviour
         }
     }
     void OnTriggerExit2D(Collider2D coll){
-        if (coll.tag == IcyTag){
+        if (coll.tag == IcyTag)
+        {
             OnIce = false;
         }
     }
 
-    IEnumerator death(){
-        yield return new WaitForSeconds(timeBeforeDeath);
+    IEnumerator Death(){
+        yield return new WaitForSeconds(TimeBeforeDeath);
         SceneManager.LoadScene("GameOver");
     }
 }
