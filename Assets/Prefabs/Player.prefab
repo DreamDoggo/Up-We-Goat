@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 241689705442690403}
   - component: {fileID: 8262080058742410912}
   - component: {fileID: 2963043559892253942}
+  - component: {fileID: 5109766418107476613}
   - component: {fileID: 976899955863777610}
   - component: {fileID: 6762362557789597419}
   m_Layer: 0
@@ -145,9 +146,11 @@ MonoBehaviour:
   JumpStrength: 10
   JumpDamping: 0.5
   CoyoteTime: 0.1
+  JumpBufferTime: 0.1
   RefSprite: {fileID: 440038982871551289}
   RefRigidBody: {fileID: 8262080058742410912}
   RefCollider: {fileID: 2963043559892253942}
+  RefAnimator: {fileID: 5109766418107476613}
   CollectionText: {fileID: 0}
   GoatSource: {fileID: 6762362557789597419}
   JumpSource: {fileID: 976899955863777610}
@@ -162,7 +165,6 @@ MonoBehaviour:
     m_Bits: 64
   JumpSFX: {fileID: 8300000, guid: db6edef3c0f6cb84e95f83ae22cdd63d, type: 3}
   CollectableSFX: {fileID: 8300000, guid: 28e57bfd20393be4abcaf4f6fecac6a5, type: 3}
-  animator: {fileID: 0}
 --- !u!50 &8262080058742410912
 Rigidbody2D:
   serializedVersion: 4
@@ -235,6 +237,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3658113, y: 0.90042317}
   m_EdgeRadius: 0
+--- !u!95 &5109766418107476613
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941000375643947615}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6344885c1c6ca4b4d8437bb74c9198e3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &976899955863777610
 AudioSource:
   m_ObjectHideFlags: 0
@@ -247,7 +270,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 88b25ffe71912694d870041e1d22e201, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.12
+  m_Volume: 0.162
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -343,7 +366,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6ff21c63c8c35174581e5469cabc3ecd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.826
   m_Pitch: 1
   Loop: 0
   Mute: 0
