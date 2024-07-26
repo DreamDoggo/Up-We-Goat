@@ -142,7 +142,7 @@ MonoBehaviour:
   AltJumpKey: 119
   MoveSpeed: 10
   MaximumVelocity: 9
-  IceMoveSpeed: 1.2
+  IceMoveSpeed: 1.4
   JumpStrength: 10
   JumpDamping: 0.5
   CoyoteTime: 0.1
@@ -155,7 +155,7 @@ MonoBehaviour:
   GoatSource: {fileID: 6762362557789597419}
   JumpSource: {fileID: 976899955863777610}
   grabby: 0
-  timeBeforeDeath: 5
+  TimeBeforeDeath: 5
   HazardTag: obs
   IcyTag: slippery
   GrabTag: grab
