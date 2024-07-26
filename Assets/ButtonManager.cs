@@ -5,30 +5,57 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    [Tooltip("How long to wait in seconds after a button is pressed before playing its sound effect")]
+    [SerializeField] float ButtonClickSoundDelay = .1f;
+    [SerializeField] AudioClip ButtonClickSound;
 
+    private AudioSource SFXPlayer;
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+        SFXPlayer = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
+        
+        
     }
 
     public void StartGame()
     {
+        PlayButtonSoundEffect(ButtonClickSound, ButtonClickSoundDelay);
         SceneManager.LoadScene("sketch-leap");
     }
 
     public void GotToTips()
     {
+        PlayButtonSoundEffect(ButtonClickSound, ButtonClickSoundDelay);
         SceneManager.LoadScene("TipsScreen");
     }
 
     public void GoToMenu()
     {
+        PlayButtonSoundEffect(ButtonClickSound, ButtonClickSoundDelay);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 0) 
+        {
+            PlayButtonSoundEffect(ButtonClickSound, ButtonClickSoundDelay);
+        }
+    }
+
+    public void PlayButtonSoundEffect(AudioClip soundEffect, float delay) 
+    {
+        if (soundEffect != null) 
+        {
+            SFXPlayer.clip = soundEffect;
+            SFXPlayer.PlayDelayed(delay);
+        }
     }
 }
