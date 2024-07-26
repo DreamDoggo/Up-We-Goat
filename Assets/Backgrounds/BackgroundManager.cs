@@ -19,7 +19,7 @@ public class BackgroundManager : MonoBehaviour
     void Update()
     {
         if (player.transform.position.y >= infiniteBegin + colliderHolder * numberOfDupes){
-            int rand = UnityEngine.Random.Range(0,Backgrounds.Length+1);
+            int rand = UnityEngine.Random.Range(0,Backgrounds.Length);
             BoxCollider2D backgroundCollider = Backgrounds[rand].GetComponent<BoxCollider2D>();
             Instantiate(Backgrounds[rand], new Vector3(0, infinitePlacementBegin + colliderHolder, 0), Quaternion.identity);
             colliderHolder = colliderHolder + backgroundCollider.size.y;
