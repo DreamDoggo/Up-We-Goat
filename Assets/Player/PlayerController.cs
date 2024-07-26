@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     /*[Tooltip("How quickly to slow the player down after movement keys are not held down" +
         "Lower values produce larger results")]
+    // Relic of the old force based movement system
     [Range(-1f, 3f)]
     [SerializeField] float MovementDamping = .95f;*/
     
@@ -40,6 +41,14 @@ public class PlayerController : MonoBehaviour
         "Lower values produce larger results")]
     [Range(.1f, 1f)]
     [SerializeField] float JumpDamping = .5f;
+
+    [Tooltip("Time in seconds the player can still jump while not on the ground")]
+    [Range(0f, .3f)]
+    [SerializeField] float CoyoteTime = 0.1f;
+
+    [Tooltip("Time in seconds the player can press jump before being on the ground and still jump")]
+    [Range(0f, .3f)]
+    [SerializeField] float JumpBufferTime = 0.1f;
 
     [Header("References")]
     [SerializeField] SpriteRenderer RefSprite;
@@ -70,9 +79,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sound Effects")]
     [SerializeField] AudioClip JumpSFX;
-    [SerializeField] AudioClip GoatSFX;
+    [SerializeField] AudioClip CollectableSFX;
 
-    float floatTemp;
+    private float floatTemp;
+    private float CoyoteTimeCounter;
+    private float JumpBufferCounter;
     private bool OnIce;
 
     //
@@ -155,9 +166,30 @@ public class PlayerController : MonoBehaviour
 
     public void Jump() 
     {
-        if ((Input.GetKeyDown(JumpKey) || Input.GetKey(AltJumpKey)) && IsGrounded()) 
+        // Handle Coyote Time
+        if (IsGrounded()) 
+        {
+            CoyoteTimeCounter = CoyoteTime;
+        }
+        else 
+        {
+            CoyoteTimeCounter -= Time.deltaTime;
+        }
+        
+        // Handle Jump Buffering
+        if (Input.GetKeyDown(JumpKey) || Input.GetKeyDown(AltJumpKey)) 
+        {
+            JumpBufferCounter = JumpBufferTime;
+        }
+        else 
+        {
+            JumpBufferCounter -= Time.deltaTime;
+        }
+
+        if (JumpBufferCounter > 0f && CoyoteTimeCounter > 0f) 
         {
             RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x, JumpStrength);
+            JumpBufferCounter = 0f;
             if (JumpSource.isPlaying == false)
             {
                 JumpSource.PlayOneShot(JumpSFX);
@@ -167,6 +199,7 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetKeyUp(JumpKey) || Input.GetKeyUp(AltJumpKey)) && RefRigidBody.velocity.y > 0f) 
         {
             RefRigidBody.velocity *= new Vector2(1, JumpDamping);
+            CoyoteTimeCounter = 0f;
         }
 
     }
@@ -188,8 +221,8 @@ public class PlayerController : MonoBehaviour
         else if (coll.tag == GrabTag){
             grabby++;
             CollectionText.text = grabby.ToString();
-            AudioSource.PlayClipAtPoint(GoatSFX, transform.position);
-            GoatSource.PlayOneShot(GoatSFX);
+            AudioSource.PlayClipAtPoint(CollectableSFX, transform.position);
+            GoatSource.PlayOneShot(CollectableSFX);
             Destroy (coll.gameObject);
         }
     }

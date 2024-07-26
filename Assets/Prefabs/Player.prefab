@@ -144,6 +144,7 @@ MonoBehaviour:
   IceMoveSpeed: 1.2
   JumpStrength: 10
   JumpDamping: 0.5
+  CoyoteTime: 0.1
   RefSprite: {fileID: 440038982871551289}
   RefRigidBody: {fileID: 8262080058742410912}
   RefCollider: {fileID: 2963043559892253942}
@@ -153,14 +154,14 @@ MonoBehaviour:
   grabby: 0
   timeBeforeDeath: 5
   HazardTag: obs
-  IceyTag: slippery
+  IcyTag: slippery
   GrabTag: grab
   GroundCheck: {fileID: 5047815554847562652}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
   JumpSFX: {fileID: 8300000, guid: db6edef3c0f6cb84e95f83ae22cdd63d, type: 3}
-  GoatSFX: {fileID: 8300000, guid: 28e57bfd20393be4abcaf4f6fecac6a5, type: 3}
+  CollectableSFX: {fileID: 8300000, guid: 28e57bfd20393be4abcaf4f6fecac6a5, type: 3}
   animator: {fileID: 0}
 --- !u!50 &8262080058742410912
 Rigidbody2D:
