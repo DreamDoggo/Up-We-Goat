@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer RefSprite;
     [SerializeField] Rigidbody2D RefRigidBody;
     [SerializeField] BoxCollider2D RefCollider;
+    [SerializeField] Animator RefAnimator;
     [SerializeField] Text CollectionText;
     [SerializeField] AudioSource GoatSource;
     [SerializeField] AudioSource JumpSource; 
@@ -86,9 +87,6 @@ public class PlayerController : MonoBehaviour
     private float JumpBufferCounter;
     private bool OnIce;
 
-    //
-    public Animator animator;
-
     private void Start()
     {
         QualitySettings.vSyncCount = 1;
@@ -109,13 +107,17 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(MoveLeftKey) || Input.GetKey(AltMoveLeftKey)) 
         {
+            RefAnimator.SetFloat("Speed",1);
             horizontalInputs += Vector2.left;
             RefSprite.flipX = true;
         }
-        if (Input.GetKey(MoveRightKey) || Input.GetKey(AltMoveRightKey)) 
+        else if (Input.GetKey(MoveRightKey) || Input.GetKey(AltMoveRightKey)) 
         {
+            RefAnimator.SetFloat("Speed",1);
             horizontalInputs += Vector2.right;
             RefSprite.flipX = false;
+        } else {
+            RefAnimator.SetFloat("Speed",0);
         }
         horizontalInputs.Normalize();
 
