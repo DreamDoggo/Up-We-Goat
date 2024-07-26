@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             Instantiate(PlatformPrefab[0], spawnPosition, Quaternion.identity);
-            var randomInt = Random.Range(1,3);
+            var randomInt = Random.Range(1,101);
             if (randomInt <= CollectableSpawnChance)
             {
                 Instantiate(CollectablePrefab, new Vector2(spawnPosition.x,spawnPosition.y+coinDistance), Quaternion.identity);
