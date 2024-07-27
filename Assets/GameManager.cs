@@ -6,8 +6,8 @@ using UnityEngine.Windows.Speech;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public LevelManager levels;
-    public GameObject[] PlatformPrefabs = new GameObject[2];
-    //public Transform[] PlatformSpawnLocations = new Transform[3];
+    [SerializeField] GameObject[] PlatformPrefabs = new GameObject[2];
+    [SerializeField] Transform[] PlatformSpawnLocations = new Transform[3];
     /*
     PlatformPrefab[0] = Basic Platform
     PlatformPrefab[1] = Ice Platform
@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Determines what level layout to set up depending on what level the Player just entered
+    /// </summary>
     private void PlaceNewLevel() 
     {
         switch (LevelManager.Level) 
@@ -64,6 +67,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the logic related to placing platforms
+    /// </summary>
+    /// <param name="spawnPosition">
+    /// The position where the platforms will start spawning from
+    /// </param>
+    /// <param name="platformPrefabs">
+    /// The prefabs for the platforms that will be spawned
+    /// </param>
     private void PlacePlatforms(Transform spawnPosition, GameObject[] platformPrefabs) 
     {
         
