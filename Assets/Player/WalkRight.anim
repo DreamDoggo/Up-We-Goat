@@ -89,3 +89,10 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.375
+    functionName: PlayStep
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 7c72281fbde403e46981fa8ae750f123, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
