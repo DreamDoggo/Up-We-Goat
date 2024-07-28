@@ -1572,6 +1572,24 @@ MonoBehaviour:
   PlatformPrefabs:
   - {fileID: 2447340275648093585, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
   - {fileID: 2447340275648093585, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
+  PlatformSpawnLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  LevelOnePlatforms:
+  - {fileID: 2447340275648093585, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
+  LevelOnePlatformChances: 64000000
+  LevelTwoPlatforms:
+  - {fileID: 2447340275648093585, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
+  - {fileID: 2447340275648093585, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
+  LevelTwoPlatformChances: 1e00000046000000
+  LevelThreePlatforms:
+  - {fileID: 2447340275648093585, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
+  LevelThreePlatformChances: 64000000
+  LevelFourPlatforms:
+  - {fileID: 2447340275648093585, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
+  - {fileID: 2447340275648093585, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
+  LevelFourPlatformChances: 3c00000028000000
   CollectablePrefab: {fileID: 6875637389228419335, guid: acb36c24a6031414cb805a5b4ded972f, type: 3}
   PlatformCount: 300
   coinDistance: 1.5
