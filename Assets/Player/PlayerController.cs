@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
     [Range(2f, 60f)]
     [SerializeField] float MaximumVelocity = 5f;
 
-    /*[Tooltip("How quickly to slow the player down after movement keys are not held down" +
+    [Tooltip("How quickly to slow the player down after movement keys are not held down on ice" +
         "Lower values produce larger results")]
     // Relic of the old force based movement system
     [Range(-1f, 3f)]
-    [SerializeField] float MovementDamping = .95f;*/
+    [SerializeField] float IceMovementDamping = .98f;
     
     [Tooltip("How quickly to slow the player down after movement keys are not held down" +
         "whilst on icey platforms")]
@@ -137,6 +137,10 @@ public class PlayerController : MonoBehaviour
         if (RefRigidBody.velocity.magnitude > MaximumVelocity) 
         {
             RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.normalized.x * MaximumVelocity, RefRigidBody.velocity.y);
+            if (horizontalInputs.sqrMagnitude <= 0.1f) 
+            {
+                RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x * IceMovementDamping * Time.deltaTime, RefRigidBody.velocity.y);
+            }
         }
 
         // Slow they player down if we stop receiving inputs
@@ -210,7 +214,7 @@ public class PlayerController : MonoBehaviour
         else if (coll.tag == GrabTag)
         {
             grabby++;
-            CollectionText.text = grabby.ToString();
+            //CollectionText.text = grabby.ToString();
             AudioSource.PlayClipAtPoint(CollectableSFX, transform.position);
             GoatSource.PlayOneShot(CollectableSFX);
             Destroy (coll.gameObject);

@@ -7,7 +7,7 @@ using UnityEngine.Windows.Speech;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public LevelManager levels;
-    [SerializeField] GameObject[] PlatformPrefabs = new GameObject[2];
+    //[SerializeField] GameObject[] PlatformPrefabs = new GameObject[2];
     [SerializeField] Transform[] PlatformSpawnLocations = new Transform[3];
     /*
     PlatformPrefab[0] = Basic Platform
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     
     public GameObject CollectablePrefab;
-    [SerializeField] int PlatformCount = 300;
+    //[SerializeField] int PlatformCount = 300;
     [SerializeField] float CollectableSpawnDistance = 1.5f;
     [SerializeField] float PlatformSpawnHeight = 1.75f;
 
@@ -44,11 +44,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] int CollectableSpawnChance = 33;
 
 
+    private void Awake()
+    {
+        PlaceNewLevel();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 spawnPosition = new Vector2(0f, -8f);
-
+        
         /*for (int i = 0; i < PlatformCount; i++)
         {
             spawnPosition.y += PlatformSpawnHeight;
@@ -77,16 +81,20 @@ public class GameManager : MonoBehaviour
     {
         switch (LevelManager.Level) 
         {
-            case 1:
+            default:
+                Debug.Log("Placing Level 1");
                 PlacePlatformsFinite(PlatformSpawnLocations[0].position, PlatformSpawnLocations[1].position.y, LevelOnePlatforms, LevelOnePlatformChances);
+                SpawnRocks();
                 break;
             case 2:
+                Debug.Log("Placing Level 2");
                 PlacePlatformsFinite(PlatformSpawnLocations[1].position, PlatformSpawnLocations[2].position.y, LevelTwoPlatforms, LevelTwoPlatformChances);
                 break;
             case 3:
+                Debug.Log("Placing Level 3");
                 PlacePlatformsFinite(PlatformSpawnLocations[2].position, PlatformSpawnLocations[3].position.y, LevelThreePlatforms, LevelThreePlatformChances);
                 break;
-            default:
+            case 4:
                 break;
         }
         return;
@@ -113,9 +121,6 @@ public class GameManager : MonoBehaviour
         // Keep spawning platforms until we hit the next stage
         while (spawnPosition.y <= placeUntilHeight) 
         {
-            spawnPosition.y += PlatformSpawnHeight;
-            spawnPosition.x = Random.Range(-5f, 5f);
-
             // Spawn a platform based on how common it is
             int randomInt = Random.Range(1, 101);
             
@@ -123,11 +128,14 @@ public class GameManager : MonoBehaviour
             {
                 if (randomInt <= platformChances[i]) 
                 {
+                    spawnPosition.x = Random.Range(-5f, 5f);
+                    spawnPosition.y += PlatformSpawnHeight;
                     GameObject platformSpawned = Instantiate(platformPrefabs[i], spawnPosition, Quaternion.identity);
                     PlaceCollectable(CollectablePrefab, platformSpawned);
                     break;
                 }
-            }  
+            }
+            
         }
         return;
     }
@@ -149,4 +157,14 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
     }
+
+    // Obstacles
+    public void SpawnRocks() { }
+    public void SpawnSnowballs() { }
+    public void SpawnAvalance() { }
+    public void SpawnBirds() { }
+    public void SpawnWind() { }
+
+
+
 }

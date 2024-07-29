@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     [Tooltip("The level which the player is currently in")]
-    [SerializeField] public static int Level = 0;
+    public static int Level = 1;
 
     GameManager gameManager;
 
