@@ -83,16 +83,16 @@ public class GameManager : MonoBehaviour
         {
             default:
                 Debug.Log("Placing Level 1");
-                PlacePlatformsFinite(PlatformSpawnLocations[0].position, PlatformSpawnLocations[1].position.y, LevelOnePlatforms, LevelOnePlatformChances);
+                PlacePlatformsInRange(PlatformSpawnLocations[0].position, PlatformSpawnLocations[1].position.y, LevelOnePlatforms, LevelOnePlatformChances);
                 SpawnRocks();
                 break;
             case 2:
                 Debug.Log("Placing Level 2");
-                PlacePlatformsFinite(PlatformSpawnLocations[1].position, PlatformSpawnLocations[2].position.y, LevelTwoPlatforms, LevelTwoPlatformChances);
+                PlacePlatformsInRange(PlatformSpawnLocations[1].position, PlatformSpawnLocations[2].position.y, LevelTwoPlatforms, LevelTwoPlatformChances);
                 break;
             case 3:
                 Debug.Log("Placing Level 3");
-                PlacePlatformsFinite(PlatformSpawnLocations[2].position, PlatformSpawnLocations[3].position.y, LevelThreePlatforms, LevelThreePlatformChances);
+                PlacePlatformsInRange(PlatformSpawnLocations[2].position, PlatformSpawnLocations[3].position.y, LevelThreePlatforms, LevelThreePlatformChances);
                 break;
             case 4:
                 break;
@@ -116,17 +116,17 @@ public class GameManager : MonoBehaviour
     /// The chance (0-100) that a given platform will be placed instead of another.
     /// Index 0 = default, Index 1 = icy
     /// </param>
-    private void PlacePlatformsFinite(Vector2 spawnPosition, float placeUntilHeight, GameObject[] platformPrefabs, int[] platformChances) 
+    private void PlacePlatformsInRange(Vector2 spawnPosition, float placeUntilHeight, GameObject[] platformPrefabs, int[] platformChances)
     {
         // Keep spawning platforms until we hit the next stage
-        while (spawnPosition.y <= placeUntilHeight) 
+        while (spawnPosition.y <= placeUntilHeight)
         {
             // Spawn a platform based on how common it is
             int randomInt = Random.Range(1, 101);
-            
+
             for (int i = 0; i < platformPrefabs.Length; i++)
             {
-                if (randomInt <= platformChances[i]) 
+                if (randomInt <= platformChances[i])
                 {
                     spawnPosition.x = Random.Range(-5f, 5f);
                     spawnPosition.y += PlatformSpawnHeight;
@@ -135,9 +135,15 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             }
-            
+
         }
         return;
+    }
+
+    private void PlacePlatformsInfinite() 
+    {
+        Vector2 spawnPositon = PlatformSpawnLocations[3].position;
+        //float placeUntilHeight = 
     }
 
     private void PlaceCollectable(GameObject collectablePrefab, GameObject platformToSpawnOn) 
