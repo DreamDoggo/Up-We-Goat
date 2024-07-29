@@ -2370,6 +2370,7 @@ GameObject:
   - component: {fileID: 1484269309}
   - component: {fileID: 1484269312}
   - component: {fileID: 1484269313}
+  - component: {fileID: 1484269314}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2502,14 +2503,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484269307}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5544ab29f710e2428c22b0e2bff6dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Obstacle:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3318207025976957502, guid: 682b4daecff9ad0428b0d580806270bc, type: 3}
+  - {fileID: 3318207025976957502, guid: 0c31d739fcfafce418b8367c1866a285, type: 3}
   - {fileID: 0}
   Player: {fileID: 1441368690}
   MinX: -4.7
@@ -2517,6 +2518,23 @@ MonoBehaviour:
   DistanceY: 10
   DropTimer: 3
   timer: 0
+--- !u!114 &1484269314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484269307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b0259aac3e27c4f86a88b0ff481b9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bird: {fileID: 2464866811989047899, guid: 623e4b96cddfe5e438e8fdc62b486d08, type: 3}
+  player: {fileID: 1441368690}
+  maxBirdHeight: 3
+  birdTimer: 0
+  birdSpawnTime: 5
 --- !u!1 &1537031151
 GameObject:
   m_ObjectHideFlags: 0
