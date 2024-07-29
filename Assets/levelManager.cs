@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         gameManager = FindFirstObjectByType<GameManager>();
+        Level = 1;
     }
 
     void OnTriggerEnter2D(Collider2D coll){
