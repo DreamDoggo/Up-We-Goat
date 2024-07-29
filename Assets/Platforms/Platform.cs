@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Platform : MonoBehaviour
 {
@@ -10,14 +12,20 @@ public class Platform : MonoBehaviour
 
     private void Awake()
     {
-        DeathTrigger = GameObject.Find(DeathTriggerName).transform;
+        if (SceneManager.GetSceneByName("sketch-leap").isLoaded) 
+        {
+            DeathTrigger = GameObject.Find(DeathTriggerName).transform;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (transform.position.y < DeathTrigger.position.y) 
-        {
-            Destroy(gameObject);
+        if (SceneManager.GetSceneByName("sketch-leap").isLoaded) 
+        { 
+            if (transform.position.y < DeathTrigger.position.y) 
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

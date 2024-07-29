@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     [Range(0, 100)]
     [SerializeField] int[] LevelFourPlatformChances = new int[2];
 
+
+    [SerializeField] GameObject snow;
+
     
     public GameObject CollectablePrefab;
     [Tooltip("How many platforms to spawn at a time in level 4")]
@@ -43,7 +46,6 @@ public class GameManager : MonoBehaviour
     [Tooltip("What is the chance out of 100 that a collectable will spawn on any given platform")]
     [Range(1, 100)]
     [SerializeField] int CollectableSpawnChance = 33;
-
     public Vector2 NextInfiniteSpawnPosition;
 
 
@@ -89,10 +91,12 @@ public class GameManager : MonoBehaviour
             case 2:
                 Debug.Log("Placing Level 2");
                 PlacePlatformsInRange(PlatformSpawnLocations[1].position, PlatformSpawnLocations[2].position.y, LevelTwoPlatforms, LevelTwoPlatformChances);
+                Snow();
                 break;
             case 3:
                 Debug.Log("Placing Level 3");
                 PlacePlatformsInRange(PlatformSpawnLocations[2].position, PlatformSpawnLocations[3].position.y, LevelThreePlatforms, LevelThreePlatformChances);
+                Snow();
                 break;
             case 4:
                 Debug.Log("Placing Level 4");
@@ -192,7 +196,13 @@ public class GameManager : MonoBehaviour
     public void SpawnAvalance() { }
     public void SpawnBirds() { }
     public void SpawnWind() { }
-
+    public void Snow(){
+        if(snow.activeSelf == false){
+            snow.SetActive(true);   
+        } else {
+            snow.SetActive(false);
+        }
+    }
 
 
 }
