@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class birdSpawns : MonoBehaviour
@@ -9,6 +10,7 @@ public class birdSpawns : MonoBehaviour
     [SerializeField] float maxBirdHeight;
     [SerializeField] float birdTimer;
     [SerializeField] float birdSpawnTime;
+    [SerializeField] AudioClip birdSound;
 
     void Update()
     {
@@ -16,7 +18,10 @@ public class birdSpawns : MonoBehaviour
             birdTimer += Time.deltaTime;
             if (birdTimer >= birdSpawnTime){
                 float random = Random.Range(0, maxBirdHeight);
-                Instantiate(bird, new Vector2(-9, player.transform.position.y + random), Quaternion.identity);
+                GameObject birdSpawned = Instantiate(bird, new Vector2(-9, player.transform.position.y + random), Quaternion.identity);
+                AudioSource birdAudioSource = birdSpawned.GetComponent<AudioSource>();
+                birdAudioSource.clip = birdSound;
+                birdAudioSource.Play();
                 birdTimer = 0;
 
             }
