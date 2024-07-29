@@ -16,6 +16,7 @@ public class randomFallingObstacles : MonoBehaviour
     [Range(0f, 10f)]
     [SerializeField] float DropTimer = 10;
     [SerializeField] float timer;
+    [SerializeField] AudioClip FallingSFX;
     void Start(){
         levelman = FindFirstObjectByType<LevelManager>();
     }
@@ -24,8 +25,12 @@ public class randomFallingObstacles : MonoBehaviour
         int level = LevelManager.Level-1;
         Vector3 point = new Vector3(Random.Range(MinX, MaxX), Player.transform.position.y + DistanceY, Player.transform.position.z);
         if (timer >= DropTimer){
-            try{
-                Instantiate(Obstacle[level], point, Player.transform.rotation);
+            try
+            {
+                GameObject rockspawned = Instantiate(Obstacle[level], point, Player.transform.rotation);
+                AudioSource FallingAudioSource = rockspawned.GetComponent<AudioSource>();
+                FallingAudioSource.clip = FallingSFX;
+                FallingAudioSource.Play();
                 timer = 0;
             } catch {
             }
