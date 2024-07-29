@@ -81,8 +81,6 @@ public class PlayerController : MonoBehaviour
     [Header("Sound Effects")]
     [SerializeField] AudioClip JumpSFX;
     [SerializeField] AudioClip CollectableSFX;
-
-    private float floatTemp;
     private float CoyoteTimeCounter;
     private float JumpBufferCounter;
     private bool OnIce;
@@ -214,7 +212,7 @@ public class PlayerController : MonoBehaviour
         else if (coll.tag == GrabTag)
         {
             grabby++;
-            //CollectionText.text = grabby.ToString();
+            CollectionText.text = grabby.ToString();
             AudioSource.PlayClipAtPoint(CollectableSFX, transform.position);
             GoatSource.PlayOneShot(CollectableSFX);
             Destroy (coll.gameObject);
