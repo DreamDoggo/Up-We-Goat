@@ -7,7 +7,7 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] string DeathTriggerName = "Death Platform";
 
-    Transform DeathTrigger = null;
+    Transform DeathTrigger;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class Platform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (SceneManager.GetSceneByName("sketch-leap").isLoaded && DeathTrigger != null) 
+        if (SceneManager.GetSceneByName("sketch-leap").isLoaded) 
         { 
             if (transform.position.y < DeathTrigger.position.y) 
             {
