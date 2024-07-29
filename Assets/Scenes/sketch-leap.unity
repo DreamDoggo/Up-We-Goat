@@ -12295,6 +12295,7 @@ MonoBehaviour:
   maxBirdHeight: 3
   birdTimer: 0
   birdSpawnTime: 5
+  birdSound: {fileID: 8300000, guid: b6058d497f0936b438fe5c8dbfe90cdc, type: 3}
 --- !u!1 &1537031151
 GameObject:
   m_ObjectHideFlags: 0

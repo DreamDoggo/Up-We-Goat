@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
     // If the player is close enough to the ground, consider them to be grounded
     private bool IsGrounded() 
     {
-        return Physics2D.OverlapCircle(GroundCheck.position, 0.3f, GroundLayer);
+        return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
     }
 
     void OnTriggerEnter2D(Collider2D coll){
