@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] public LevelManager levels;
     //[SerializeField] GameObject[] PlatformPrefabs = new GameObject[2];
-    [SerializeField] Transform[] PlatformSpawnLocations = new Transform[3];
+    [SerializeField] Transform[] PlatformSpawnLocations = new Transform[4];
     /*
     PlatformPrefab[0] = Basic Platform
     PlatformPrefab[1] = Ice Platform
@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
 
     
     public GameObject CollectablePrefab;
-    //[SerializeField] int PlatformCount = 300;
+    [Tooltip("How many platforms to spawn at a time in level 4")]
+    [SerializeField] int InfinitePlatformIncrement = 100;
     [SerializeField] float CollectableSpawnDistance = 1.5f;
     [SerializeField] float PlatformSpawnHeight = 1.75f;
 
@@ -43,15 +44,14 @@ public class GameManager : MonoBehaviour
     [Range(1, 100)]
     [SerializeField] int CollectableSpawnChance = 33;
 
+    public Vector2 NextInfiniteSpawnPosition;
 
-    private void Awake()
-    {
-        PlaceNewLevel();
-    }
 
     // Start is called before the first frame update
     void Start()
     {
+        PlaceNewLevel();
+        NextInfiniteSpawnPosition = PlatformSpawnLocations[3].position;
         
         /*for (int i = 0; i < PlatformCount; i++)
         {
@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour
                 PlacePlatformsInRange(PlatformSpawnLocations[2].position, PlatformSpawnLocations[3].position.y, LevelThreePlatforms, LevelThreePlatformChances);
                 break;
             case 4:
+                Debug.Log("Placing Level 4");
+                PlacePlatformsByNumber();
                 break;
         }
         return;
@@ -135,15 +137,35 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             }
-
         }
         return;
     }
 
-    private void PlacePlatformsInfinite() 
+    private void PlacePlatformsByNumber() 
     {
-        Vector2 spawnPositon = PlatformSpawnLocations[3].position;
-        //float placeUntilHeight = 
+        Vector2 spawnPosition = NextInfiniteSpawnPosition;
+        int platformsPlaced = 0;
+        // Keep spawning platforms until we spawn all that are in the incremement
+        while (platformsPlaced < InfinitePlatformIncrement)
+        {
+            // Spawn a platform based on how common it is
+            int randomInt = Random.Range(1, 101);
+
+            for (int i = 0; i < LevelFourPlatforms.Length; i++)
+            {
+                if (randomInt <= LevelFourPlatformChances[i])
+                {
+                    spawnPosition.x = Random.Range(-5f, 5f);
+                    spawnPosition.y += PlatformSpawnHeight;
+                    GameObject platformSpawned = Instantiate(LevelFourPlatforms[i], spawnPosition, Quaternion.identity);
+                    PlaceCollectable(CollectablePrefab, platformSpawned);
+                    platformsPlaced++;
+                    break;
+                }
+            }
+        }
+        NextInfiniteSpawnPosition = spawnPosition;
+        return;
     }
 
     private void PlaceCollectable(GameObject collectablePrefab, GameObject platformToSpawnOn) 

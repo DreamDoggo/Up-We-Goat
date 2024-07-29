@@ -16,10 +16,31 @@ public class LevelManager : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D coll){
-        if (coll.gameObject.name == "Player"){
-            Level++;
+        if (coll.gameObject.name == "Player")
+        {
+            if (Level == 3)
+            {
+                transform.position = new Vector2(0, gameManager.NextInfiniteSpawnPosition.y - 5f);
+            }
+            if (Level != 4)
+            {
+                Level++;
+            }
             gameManager.PlaceNewLevel();
-            Destroy(gameObject);
+            if (Level != 4) 
+            {
+                Destroy(gameObject);
+            }
+            HandleLevelFour();
+        }
+    }
+
+    void HandleLevelFour() 
+    {
+        if (Level == 4) 
+        {
+            transform.position = new Vector2(0, gameManager.NextInfiniteSpawnPosition.y - 5f);
+            gameManager.PlaceNewLevel();
         }
     }
 }
