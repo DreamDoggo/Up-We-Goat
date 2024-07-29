@@ -3,7 +3,11 @@ guid: 10b0259aac3e27c4f86a88b0ff481b9d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bird: {instanceID: 0}
+  - player: {instanceID: 0}
+  - BirdSFX: {fileID: 8300000, guid: b6058d497f0936b438fe5c8dbfe90cdc, type: 3}
+  - BirdScream: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

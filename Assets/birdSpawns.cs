@@ -9,7 +9,7 @@ public class birdSpawns : MonoBehaviour
     [SerializeField] float maxBirdHeight;
     [SerializeField] float birdTimer;
     [SerializeField] float birdSpawnTime;
-  
+
     void Update()
     {
         if (LevelManager.Level == 3){
@@ -18,6 +18,7 @@ public class birdSpawns : MonoBehaviour
                 float random = Random.Range(0, maxBirdHeight);
                 Instantiate(bird, new Vector2(-9, player.transform.position.y + random), Quaternion.identity);
                 birdTimer = 0;
+
             }
         }
     }

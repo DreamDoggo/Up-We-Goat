@@ -907,8 +907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65, y: -64.29999}
-  m_SizeDelta: {x: 65.87189, y: 40.6196}
+  m_AnchoredPosition: {x: -90.1, y: -59.2}
+  m_SizeDelta: {x: 70.9524, y: 49.3291}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789394980
 MonoBehaviour:
@@ -931,13 +931,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 871c2036f9cf744b9b0e740006ebac34, type: 3}
     m_FontSize: 28
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2643,7 +2643,7 @@ AudioSource:
   m_Volume: 0.296
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

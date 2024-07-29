@@ -9,4 +9,6 @@ public class theGraciousBird : MonoBehaviour
     {
         gameObject.transform.position += Vector3.right * speed/100;
     }
+
+
 }
