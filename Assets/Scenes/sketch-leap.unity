@@ -13711,6 +13711,10 @@ PrefabInstance:
       propertyPath: CollectionText
       value: 
       objectReference: {fileID: 789394980}
+    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: TimeBeforeDeath
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 976899955863777610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Volume
       value: 0.217
