@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +7,7 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] string DeathTriggerName = "Death Platform";
 
-    Transform DeathTrigger;
+    Transform DeathTrigger = null;
 
     private void Awake()
     {
@@ -20,7 +19,7 @@ public class Platform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (SceneManager.GetSceneByName("sketch-leap").isLoaded) 
+        if (SceneManager.GetSceneByName("sketch-leap").isLoaded && DeathTrigger != null) 
         { 
             if (transform.position.y < DeathTrigger.position.y) 
             {
