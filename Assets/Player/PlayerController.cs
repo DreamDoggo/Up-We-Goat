@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Text CollectionText;
     [SerializeField] AudioSource GoatSource;
     [SerializeField] AudioSource JumpSource; 
+    [SerializeField] GameObject JumpParticle; 
 
     [Header("Misc")]
     [Tooltip("How many collectable thingies the player has collected")]
@@ -171,6 +173,7 @@ public class PlayerController : MonoBehaviour
         // Handle Jump Buffering
         if (Input.GetKeyDown(JumpKey) || Input.GetKeyDown(AltJumpKey) || Input.GetKeyDown(SecondAltJumpKey)) 
         {
+            jumpParticle();
             JumpBufferCounter = JumpBufferTime;
         }
         else 
@@ -233,6 +236,10 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Death());
         }
+    }
+
+    void jumpParticle(){
+        Instantiate(JumpParticle, new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
     }
 
     IEnumerator Death()
