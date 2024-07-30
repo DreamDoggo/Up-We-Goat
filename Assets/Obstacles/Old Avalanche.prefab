@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6770633970875457902}
   - component: {fileID: 3562290750845661241}
   m_Layer: 0
-  m_Name: Avalanche
+  m_Name: Old Avalanche
   m_TagString: obs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
