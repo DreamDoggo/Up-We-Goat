@@ -995,8 +995,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.3008835
-          value: 0.93854314
+          time: 0.34143665
+          value: 1
           inSlope: -0.32538638
           outSlope: -0.32538638
           tangentMode: 0
@@ -1004,7 +1004,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.16636474
         - serializedVersion: 3
-          time: 0.30343223
+          time: 0.35995078
           value: 0
           inSlope: -8.918909
           outSlope: -8.918909
@@ -1307,7 +1307,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 0
+    separateAxes: 1
   ColorModule:
     enabled: 1
     gradient:
@@ -3628,7 +3628,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 1
@@ -4804,8 +4804,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 298599209
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_RenderMode: 3
   m_MeshDistribution: 0
