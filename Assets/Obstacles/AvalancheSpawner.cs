@@ -22,6 +22,8 @@ public class AvalancheSpawner : MonoBehaviour
     ParticleSystem RefParticles;
     SpriteRenderer RefSprite;
     bool AvalancheExists = false;
+    bool ParticlesExists = false;
+    bool WarningExists = false;
 
     private void Start()
     {
@@ -31,7 +33,7 @@ public class AvalancheSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!AvalancheExists) 
+        if (LevelManager.Level == 2 && !AvalancheExists) 
         {
             if (AvalancheTimer >= AvalancheSpawnTime) 
             {
@@ -39,6 +41,17 @@ public class AvalancheSpawner : MonoBehaviour
                 SpawnAvalanche();
             }
             AvalancheTimer += Time.deltaTime;
+        }
+        if (AvalancheExists) 
+        {
+            if (WarningExists) 
+            {
+                WarningSpawned.transform.position = new Vector2(WarningSpawned.transform.position.x, RefPlayer.transform.position.y); 
+            }
+            if (ParticlesExists)
+            {
+                AvalancheSpawned.transform.position = new Vector2(AvalancheSpawned.transform.position.x, RefPlayer.transform.position.y + DistanceFromPlayer);
+            }
         }
     }
 
@@ -53,6 +66,7 @@ public class AvalancheSpawner : MonoBehaviour
         Debug.Log("Spawning avalanche");
         AvalancheExists = true;
         WarningSpawned = Instantiate(AvalancheWarningPrefab, new Vector2(Random.Range(MinX, MaxX), RefPlayer.transform.position.y + DistanceFromPlayer), Quaternion.identity);
+        WarningExists = true;
         RefSprite = WarningSpawned.GetComponent<SpriteRenderer>();
         StartCoroutine(AvalancheWarning());
     }
@@ -80,12 +94,15 @@ public class AvalancheSpawner : MonoBehaviour
             yield return new WaitForSeconds(.2f);
         }
         yield return new WaitForSeconds(2);
-        Destroy(WarningSpawned);
         AvalancheSpawned = Instantiate(AvalanchePrefab, WarningSpawned.transform.position, Quaternion.identity);
+        ParticlesExists = true;
+        WarningExists = false;
+        Destroy(WarningSpawned);
         RefParticles = AvalancheSpawned.GetComponent<ParticleSystem>();
         RefParticles.Play();
-        yield return new WaitForSeconds(5);
-        Destroy(AvalancheSpawned);
+        yield return new WaitForSeconds(8);
+        ParticlesExists = false;
         AvalancheExists = false;
+        Destroy(AvalancheSpawned);
     }
 }
