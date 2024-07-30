@@ -7,6 +7,8 @@ using UnityEngine.Windows.Speech;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public LevelManager levels;
+    [SerializeField] GameObject RefBGManagerParent;
+    private BackgroundManager RefBGManager;
     //[SerializeField] GameObject[] PlatformPrefabs = new GameObject[2];
     [SerializeField] Transform[] PlatformSpawnLocations = new Transform[4];
     /*
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
     {
         PlaceNewLevel();
         NextInfiniteSpawnPosition = PlatformSpawnLocations[3].position;
+        RefBGManager = RefBGManagerParent.GetComponent<BackgroundManager>();
         
         /*for (int i = 0; i < PlatformCount; i++)
         {
@@ -101,6 +104,7 @@ public class GameManager : MonoBehaviour
             case 4:
                 Debug.Log("Placing Level 4");
                 PlacePlatformsByNumber();
+                RefBGManager.PlaceInfiniteBackgrounds();
                 break;
         }
         return;

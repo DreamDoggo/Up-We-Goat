@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -225,7 +226,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Death(){
+    private void OnParticleCollision(GameObject particle)
+    {
+        if (particle.gameObject.tag == HazardTag) 
+        {
+            StartCoroutine(Death());
+        }
+    }
+
+    IEnumerator Death()
+    {
         yield return new WaitForSeconds(TimeBeforeDeath);
         SceneManager.LoadScene("GameOver");
     }
