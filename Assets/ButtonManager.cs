@@ -42,7 +42,13 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void OnLevelWasLoaded(int level)
+    public void GoToCredits()
+    {
+        PlayButtonSoundEffect(ButtonClickSound, ButtonClickSoundDelay);
+        SceneManager.LoadScene("Credits");
+    }
+
+        private void OnLevelWasLoaded(int level)
     {
         if (level == 0) 
         {
