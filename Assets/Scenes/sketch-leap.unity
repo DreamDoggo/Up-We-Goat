@@ -12231,7 +12231,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: b3bd85c12d141458fafd97b8428b659c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -18537,7 +18537,11 @@ MonoBehaviour:
   - {fileID: 0}
   LevelFourPlatformChances: 6400000000000000
   snow: {fileID: 1452974294}
-  CollectablePrefab: {fileID: 6875637389228419335, guid: acb36c24a6031414cb805a5b4ded972f, type: 3}
+  CollectablePrefab:
+  - {fileID: 6875637389228419335, guid: acb36c24a6031414cb805a5b4ded972f, type: 3}
+  - {fileID: 6875637389228419335, guid: 427a3832bf0c54f43acf581cb9b3ebee, type: 3}
+  - {fileID: 6875637389228419335, guid: dca88eda4eae0ef4ab9e4cefc93f4483, type: 3}
+  - {fileID: 0}
   InfinitePlatformIncrement: 50
   CollectableSpawnDistance: 1
   PlatformSpawnHeight: 1.75

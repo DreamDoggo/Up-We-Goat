@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject snow;
 
     
-    public GameObject CollectablePrefab;
+    [SerializeField] GameObject[] CollectablePrefab = new GameObject[3];
+
     [Tooltip("How many platforms to spawn at a time in level 4")]
     [SerializeField] int InfinitePlatformIncrement = 100;
     [SerializeField] float CollectableSpawnDistance = 1.5f;
@@ -141,7 +142,7 @@ public class GameManager : MonoBehaviour
                     spawnPosition.x = Random.Range(-5f, 5f);
                     spawnPosition.y += PlatformSpawnHeight;
                     GameObject platformSpawned = Instantiate(platformPrefabs[i], spawnPosition, Quaternion.identity);
-                    PlaceCollectable(CollectablePrefab, platformSpawned);
+                    PlaceCollectable(CollectablePrefab[LevelManager.Level - 1], platformSpawned);
                     break;
                 }
             }
@@ -166,7 +167,7 @@ public class GameManager : MonoBehaviour
                     spawnPosition.x = Random.Range(-5f, 5f);
                     spawnPosition.y += PlatformSpawnHeight;
                     GameObject platformSpawned = Instantiate(LevelFourPlatforms[i], spawnPosition, Quaternion.identity);
-                    PlaceCollectable(CollectablePrefab, platformSpawned);
+                    PlaceCollectable(CollectablePrefab[LevelManager.Level - 1], platformSpawned);
                     platformsPlaced++;
                     break;
                 }
