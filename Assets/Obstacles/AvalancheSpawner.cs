@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AvalancheSpawner : MonoBehaviour
 {
     [SerializeField] GameObject AvalanchePrefab;
+    [SerializeField] GameObject AvalancheWarningPrefab;
     [SerializeField] GameObject RefPlayer;
     [SerializeField] float AvalancheSpawnTime;
     [Range(-10f, 0f)]
@@ -16,10 +18,12 @@ public class AvalancheSpawner : MonoBehaviour
     float AvalancheTimer;
 
     GameObject AvalancheSpawned;
+    GameObject WarningSpawned;
     ParticleSystem RefParticles;
     SpriteRenderer RefSprite;
+    bool AvalancheExists = false;
 
-    private void Awake()
+    private void Start()
     {
         SetRandomSpawnTime();
     }
@@ -27,7 +31,7 @@ public class AvalancheSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LevelManager.Level == 2) 
+        if (!AvalancheExists) 
         {
             if (AvalancheTimer >= AvalancheSpawnTime) 
             {
@@ -40,43 +44,48 @@ public class AvalancheSpawner : MonoBehaviour
 
     private void SetRandomSpawnTime() 
     {
-        AvalancheSpawnTime = Random.Range(AvalancheTimer - 1f, AvalancheTimer + 2f);
+        AvalancheSpawnTime = Random.Range(AvalancheSpawnTime - 1f, AvalancheSpawnTime + 2f);
         AvalancheTimer = 0;
     }
 
     private void SpawnAvalanche() 
     {
-        AvalancheSpawned = Instantiate(AvalanchePrefab, new Vector2(Random.Range(MinX, MaxX), RefPlayer.transform.position.y + DistanceFromPlayer), Quaternion.identity);
-        RefParticles = AvalancheSpawned.GetComponent<ParticleSystem>();
-        RefParticles.Stop();
-        RefSprite = AvalancheSpawned.GetComponentInChildren<SpriteRenderer>();
+        Debug.Log("Spawning avalanche");
+        AvalancheExists = true;
+        WarningSpawned = Instantiate(AvalancheWarningPrefab, new Vector2(Random.Range(MinX, MaxX), RefPlayer.transform.position.y + DistanceFromPlayer), Quaternion.identity);
+        RefSprite = WarningSpawned.GetComponent<SpriteRenderer>();
         StartCoroutine(AvalancheWarning());
     }
 
     private IEnumerator AvalancheWarning() 
     {
-        for (int i = 0; i < 2; i++) 
+        for (int i = 0; i < 3; i++) 
         {
             Color objectColor = RefSprite.material.color;
             while (objectColor.a >= 0) 
             {
-                float fadeAmount = objectColor.a - (.1f * Time.deltaTime);
+                float fadeAmount = objectColor.a - (25f * Time.deltaTime);
                 objectColor.a = fadeAmount;
                 RefSprite.material.color = objectColor;
+                //yield return new WaitForEndOfFrameUnit();
             }
             yield return new WaitForSeconds(.2f);
             while (objectColor.a <= .75f)
             {
-                float fadeAmount = objectColor.a + (.1f * Time.deltaTime);
+                float fadeAmount = objectColor.a + (25f * Time.deltaTime);
                 objectColor.a = fadeAmount;
+                //yield return new WaitForEndOfFrameUnit();
                 RefSprite.material.color = objectColor;
             }
             yield return new WaitForSeconds(.2f);
         }
-        yield return new WaitForSeconds(1);
-        RefSprite.material.color = Color.clear;
+        yield return new WaitForSeconds(2);
+        Destroy(WarningSpawned);
+        AvalancheSpawned = Instantiate(AvalanchePrefab, WarningSpawned.transform.position, Quaternion.identity);
+        RefParticles = AvalancheSpawned.GetComponent<ParticleSystem>();
         RefParticles.Play();
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         Destroy(AvalancheSpawned);
+        AvalancheExists = false;
     }
 }

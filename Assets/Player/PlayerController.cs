@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] KeyCode AltMoveLeftKey = KeyCode.LeftArrow;
     [SerializeField] KeyCode AltMoveRightKey = KeyCode.RightArrow;
     [SerializeField] KeyCode AltJumpKey = KeyCode.W;
+    [SerializeField] KeyCode SecondAltJumpKey = KeyCode.UpArrow;
 
     [Header("Horizontal Movement")]
     [Range(2f, 60f)]
@@ -168,7 +169,7 @@ public class PlayerController : MonoBehaviour
         }
         
         // Handle Jump Buffering
-        if (Input.GetKeyDown(JumpKey) || Input.GetKeyDown(AltJumpKey)) 
+        if (Input.GetKeyDown(JumpKey) || Input.GetKeyDown(AltJumpKey) || Input.GetKeyDown(SecondAltJumpKey)) 
         {
             JumpBufferCounter = JumpBufferTime;
         }
@@ -187,7 +188,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyUp(JumpKey) || Input.GetKeyUp(AltJumpKey)) && RefRigidBody.velocity.y > 0f) 
+        if ((Input.GetKeyUp(JumpKey) || Input.GetKeyUp(AltJumpKey) || Input.GetKeyUp(SecondAltJumpKey)) && RefRigidBody.velocity.y > 0f) 
         {
             RefRigidBody.velocity *= new Vector2(1, JumpDamping);
             CoyoteTimeCounter = 0f;
