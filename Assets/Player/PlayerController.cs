@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -88,6 +87,7 @@ public class PlayerController : MonoBehaviour
     private float CoyoteTimeCounter;
     private float JumpBufferCounter;
     private bool OnIce;
+    private int landPart = 0;
 
     private void Start()
     {
@@ -163,11 +163,16 @@ public class PlayerController : MonoBehaviour
         {
             RefAnimator.SetBool("isAirborne", false);
             CoyoteTimeCounter = CoyoteTime;
+            if (landPart == 1) {
+                jumpParticle();
+                landPart = 0;
+            }
         }
         else 
         {
             RefAnimator.SetBool("isAirborne", true);
             CoyoteTimeCounter -= Time.deltaTime;
+            landPart = 1;
         }
         
         // Handle Jump Buffering
@@ -196,7 +201,6 @@ public class PlayerController : MonoBehaviour
             RefRigidBody.velocity *= new Vector2(1, JumpDamping);
             CoyoteTimeCounter = 0f;
         }
-
     }
 
     // If the player is close enough to the ground, consider them to be grounded
