@@ -13571,7 +13571,7 @@ MonoBehaviour:
   - {fileID: 6875637389228419335, guid: acb36c24a6031414cb805a5b4ded972f, type: 3}
   - {fileID: 6875637389228419335, guid: 427a3832bf0c54f43acf581cb9b3ebee, type: 3}
   - {fileID: 6875637389228419335, guid: dca88eda4eae0ef4ab9e4cefc93f4483, type: 3}
-  - {fileID: 0}
+  - {fileID: 6875637389228419335, guid: dca88eda4eae0ef4ab9e4cefc93f4483, type: 3}
   InfinitePlatformIncrement: 50
   CollectableSpawnDistance: 1
   PlatformSpawnHeight: 1.75

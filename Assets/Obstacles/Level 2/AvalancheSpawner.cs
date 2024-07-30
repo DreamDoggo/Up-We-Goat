@@ -15,8 +15,8 @@ public class AvalancheSpawner : MonoBehaviour
     [SerializeField] float MaxX = 5f;
     [Range(8f, 15f)]
     [SerializeField] float DistanceFromPlayer = 10f;
-    float AvalancheTimer;
 
+    float AvalancheTimer;
     GameObject AvalancheSpawned;
     GameObject WarningSpawned;
     ParticleSystem RefParticles;
