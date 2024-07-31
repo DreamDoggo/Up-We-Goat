@@ -427,7 +427,7 @@ MonoBehaviour:
   CrossfadeDuration: 1
   TitleMusicVolume: 1
   GameMusicVolume: 0.4
-  GameOverMusicVolume: 0.75
+  GameOverMusicVolume: 0.555
   SpaceMusicVolume: 0.4
   TitleMusic: {fileID: 8300000, guid: 4ce1927ab1cd5b54d85505a3102aa52f, type: 3}
   GameMusic: {fileID: 8300000, guid: b8208d3c688a35d4fbbb4354cb65934d, type: 3}
