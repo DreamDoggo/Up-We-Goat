@@ -8,4 +8,7 @@ public class MenuButtons : MonoBehaviour
     public void changeScene(string scene){
         SceneManager.LoadScene(scene);
     }
+    public void exit(){
+        Application.Quit(); 
+    }
 }
