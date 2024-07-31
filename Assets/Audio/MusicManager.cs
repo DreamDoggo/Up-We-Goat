@@ -11,19 +11,22 @@ public class MusicManager : MonoBehaviour
     [SerializeField] float CrossfadeDuration = 1.5f;
     float TargetCrossfadeOutVolume = 0f;
     [Range(0, 1)]
-    [SerializeField] float TitleMusicVolume = 1f;
+    [SerializeField] public float TitleMusicVolume = 1f;
     [Range(0, 1)]
-    [SerializeField] float GameMusicVolume = .75f;
+    [SerializeField] public float GameMusicVolume = .75f;
     [Range(0, 1)]
-    [SerializeField] float GameOverMusicVolume = .75f;
+    [SerializeField] public float GameOverMusicVolume = .75f;
+    [Range(0, 1)]
+    [SerializeField] public float SpaceMusicVolume = 1f;
 
     [Space(10)]
-    [SerializeField] AudioClip TitleMusic, GameMusic, GameOverMusic;
+    [SerializeField] public AudioClip TitleMusic, GameMusic, GameOverMusic, SpaceMusic;
     [Space(10)]
     [SerializeField] AudioSource RefAudioSource1;
     [SerializeField] AudioSource RefAudioSource2;
     bool MusicPlaying = false;
     bool ComingFromGameOver = false;
+    bool InSpace = false;
 
     void Awake()
     {
