@@ -15,6 +15,13 @@ public class ButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("music");
+
+        if (objs.Length > 2)
+        {
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(this);
         SFXPlayer = GetComponent<AudioSource>();
     }

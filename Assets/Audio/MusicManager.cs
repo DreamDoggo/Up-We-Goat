@@ -44,27 +44,31 @@ public class MusicManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        switch (level) 
+        if (gameObject != null) 
         {
-            case 0:
-                Crossfade(TitleMusic, TitleMusicVolume);
-                break;
-            case 1:
-                Crossfade(GameMusic, GameMusicVolume);
-                break;
-            case 2:
-                StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
-                MusicPlaying = false;
-                break;
-            case 3:
-                Crossfade(GameOverMusic, GameOverMusicVolume);
-                new WaitForSeconds(CrossfadeDuration);
-                FindCurrentlyPlayingAudioSource().loop = false;
-                break;
-            default:
-                StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
-                MusicPlaying = false;
-                break;
+            StopAllCoroutines();
+            EnableLooping();
+            switch (level) 
+            {
+                case 0:
+                    Crossfade(TitleMusic, TitleMusicVolume);
+                    break;
+                case 1:
+                    Crossfade(GameMusic, GameMusicVolume);
+                    break;
+                case 2:
+                    StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
+                    MusicPlaying = false;
+                    break;
+                case 3:
+                    Crossfade(GameOverMusic, GameOverMusicVolume);
+                    DisableLooping();
+                    break;
+                default:
+                    StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
+                    MusicPlaying = false;
+                    break;
+            }
         }
     }
 
@@ -75,7 +79,7 @@ public class MusicManager : MonoBehaviour
         {
             StartCoroutine(StartFade(currentAudioSource, CrossfadeDuration, TargetCrossfadeOutVolume));
             AudioSource newAudioSource = FindFreeAudioSource();
-            newAudioSource.loop = true;
+            EnableLooping();
             SwitchMusic(newAudioSource, newMusic);
             StartCoroutine(StartFade(newAudioSource, CrossfadeDuration, targetCrossfadeInVolume));
         }
@@ -84,6 +88,24 @@ public class MusicManager : MonoBehaviour
             SwitchMusic(currentAudioSource, newMusic);
             StartFade(RefAudioSource1, CrossfadeDuration, targetCrossfadeInVolume);
         }
+    }
+
+    public void ToggleLooping() 
+    {
+        RefAudioSource1.loop = !RefAudioSource1.loop;
+        RefAudioSource2.loop = !RefAudioSource2.loop;
+    }
+
+    public void EnableLooping() 
+    {
+        RefAudioSource1.loop = true;
+        RefAudioSource2.loop = true;
+    }
+
+    public void DisableLooping() 
+    {
+        RefAudioSource1.loop = false;
+        RefAudioSource2.loop = false;
     }
 
     public void SwitchMusic(AudioSource audioSource, AudioClip newClip) 
@@ -127,6 +149,7 @@ public class MusicManager : MonoBehaviour
         {
             AudioSource newAudioSource = gameObject.AddComponent<AudioSource>();
             newAudioSource.loop = true;
+            newAudioSource.enabled = true;
             return newAudioSource;
         }
     }
