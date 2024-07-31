@@ -424,13 +424,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af20a000f3a312342889624e07095275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CrossfadeDuration: 1.5
+  CrossfadeDuration: 1
   TitleMusicVolume: 1
-  GameMusicVolume: 0.75
+  GameMusicVolume: 0.4
   GameOverMusicVolume: 0.75
+  SpaceMusicVolume: 0.4
   TitleMusic: {fileID: 8300000, guid: 4ce1927ab1cd5b54d85505a3102aa52f, type: 3}
   GameMusic: {fileID: 8300000, guid: b8208d3c688a35d4fbbb4354cb65934d, type: 3}
-  GameOverMusic: {fileID: 8300000, guid: afd9a05bc8eb87142bcd397da5fcfc86, type: 3}
+  GameOverMusic: {fileID: 8300000, guid: 43ae3cb4c97387a4fae3505eaa3cf347, type: 3}
+  SpaceMusic: {fileID: 8300000, guid: 81a1410f7a3a29545806c3a25e496fef, type: 3}
   RefAudioSource1: {fileID: 124147275}
   RefAudioSource2: {fileID: 124147274}
 --- !u!4 &124147277
