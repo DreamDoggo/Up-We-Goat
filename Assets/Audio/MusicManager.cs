@@ -23,6 +23,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] AudioSource RefAudioSource1;
     [SerializeField] AudioSource RefAudioSource2;
     bool MusicPlaying = false;
+    bool ComingFromGameOver = false;
 
     void Awake()
     {
@@ -48,25 +49,53 @@ public class MusicManager : MonoBehaviour
         {
             StopAllCoroutines();
             EnableLooping();
+            
             switch (level) 
             {
+                // Main Menu
                 case 0:
+                    if (ComingFromGameOver)
+                    {
+                        ClearClips();
+                        SwitchMusic(RefAudioSource1, TitleMusic);
+                        StartCoroutine(StartFade(RefAudioSource1, CrossfadeDuration, TitleMusicVolume));
+                        break;
+                    }
                     Crossfade(TitleMusic, TitleMusicVolume);
+                    ComingFromGameOver = false;
                     break;
+
+                // Gameplay
                 case 1:
+                    if (ComingFromGameOver)
+                    {
+                        ClearClips();
+                        SwitchMusic(RefAudioSource1, GameMusic);
+                        StartCoroutine(StartFade(RefAudioSource1, CrossfadeDuration, GameMusicVolume));
+                        break;
+                    }
                     Crossfade(GameMusic, GameMusicVolume);
+                    ComingFromGameOver = false;
                     break;
+
+                // Tips
                 case 2:
                     StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
                     MusicPlaying = false;
+                    ComingFromGameOver = false;
                     break;
+
+                // Game Over
                 case 3:
                     Crossfade(GameOverMusic, GameOverMusicVolume);
                     DisableLooping();
+                    ComingFromGameOver = true;
                     break;
+
                 default:
                     StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
                     MusicPlaying = false;
+                    ComingFromGameOver = false;
                     break;
             }
         }
@@ -77,16 +106,16 @@ public class MusicManager : MonoBehaviour
         AudioSource currentAudioSource = FindCurrentlyPlayingAudioSource();
         if (MusicPlaying) 
         {
-            StartCoroutine(StartFade(currentAudioSource, CrossfadeDuration, TargetCrossfadeOutVolume));
             AudioSource newAudioSource = FindFreeAudioSource();
-            EnableLooping();
             SwitchMusic(newAudioSource, newMusic);
+            StartCoroutine(StartFade(currentAudioSource, CrossfadeDuration, TargetCrossfadeOutVolume));
             StartCoroutine(StartFade(newAudioSource, CrossfadeDuration, targetCrossfadeInVolume));
         }
         else if (!MusicPlaying) 
         {
             SwitchMusic(currentAudioSource, newMusic);
             StartFade(RefAudioSource1, CrossfadeDuration, targetCrossfadeInVolume);
+            EnableLooping();
         }
     }
 
@@ -106,6 +135,12 @@ public class MusicManager : MonoBehaviour
     {
         RefAudioSource1.loop = false;
         RefAudioSource2.loop = false;
+    }
+
+    public void ClearClips() 
+    {
+        RefAudioSource1.clip = null;
+        RefAudioSource2.clip = null;
     }
 
     public void SwitchMusic(AudioSource audioSource, AudioClip newClip) 
