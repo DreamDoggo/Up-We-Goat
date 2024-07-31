@@ -59,10 +59,10 @@ public class MusicManager : MonoBehaviour
                         ClearClips();
                         SwitchMusic(RefAudioSource1, TitleMusic);
                         StartCoroutine(StartFade(RefAudioSource1, CrossfadeDuration, TitleMusicVolume));
+                        ComingFromGameOver = false;
                         break;
                     }
                     Crossfade(TitleMusic, TitleMusicVolume);
-                    ComingFromGameOver = false;
                     break;
 
                 // Gameplay
@@ -72,17 +72,16 @@ public class MusicManager : MonoBehaviour
                         ClearClips();
                         SwitchMusic(RefAudioSource1, GameMusic);
                         StartCoroutine(StartFade(RefAudioSource1, CrossfadeDuration, GameMusicVolume));
+                        ComingFromGameOver = false;
                         break;
                     }
                     Crossfade(GameMusic, GameMusicVolume);
-                    ComingFromGameOver = false;
                     break;
 
                 // Tips
                 case 2:
                     StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
                     MusicPlaying = false;
-                    ComingFromGameOver = false;
                     break;
 
                 // Game Over
@@ -95,7 +94,6 @@ public class MusicManager : MonoBehaviour
                 default:
                     StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
                     MusicPlaying = false;
-                    ComingFromGameOver = false;
                     break;
             }
         }
@@ -111,9 +109,10 @@ public class MusicManager : MonoBehaviour
             StartCoroutine(StartFade(currentAudioSource, CrossfadeDuration, TargetCrossfadeOutVolume));
             StartCoroutine(StartFade(newAudioSource, CrossfadeDuration, targetCrossfadeInVolume));
         }
-        else if (!MusicPlaying) 
+        if (MusicPlaying == false) 
         {
-            SwitchMusic(currentAudioSource, newMusic);
+            ClearClips();
+            SwitchMusic(RefAudioSource1, newMusic);
             StartFade(RefAudioSource1, CrossfadeDuration, targetCrossfadeInVolume);
             EnableLooping();
         }
