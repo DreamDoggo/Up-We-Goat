@@ -163,4 +163,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03078eec25101d146ac2ba77ed159222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathTrigger: Death Platform
+  DeathTriggerName: Death Platform
