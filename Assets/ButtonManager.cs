@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
@@ -48,7 +49,7 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
-        private void OnLevelWasLoaded(int level)
+    private void OnLevelWasLoaded(int level)
     {
         if (level == 0) 
         {
