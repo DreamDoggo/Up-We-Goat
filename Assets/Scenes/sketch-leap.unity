@@ -7239,13 +7239,18 @@ MonoBehaviour:
   - {fileID: 3318207025976957502, guid: 682b4daecff9ad0428b0d580806270bc, type: 3}
   - {fileID: 3318207025976957502, guid: 0c31d739fcfafce418b8367c1866a285, type: 3}
   - {fileID: 0}
+  - {fileID: 1474233538432803593, guid: a2b600afe986a0149bea62d0a5f097b1, type: 3}
   Player: {fileID: 1441368690}
-  MinX: -4.7
-  MaxX: 4.7
-  DistanceY: 10
-  DropTimer: 3
+  RockMinX: -5
+  RockMaxX: 5
+  RockDistanceY: 8.5
+  DropTimer: 4
   timer: 0
-  FallingSFX: {fileID: 8300000, guid: 363d3c792143fd24abd3b8d74bd7b778, type: 3}
+  RockFallingSFX: {fileID: 8300000, guid: 363d3c792143fd24abd3b8d74bd7b778, type: 3}
+  MeteorMinDistanceFromPlayer: 3
+  MeteorMaxDistanceFromPlayer: 6
+  MeteorMoveSpeed: 150
+  LeftXSpawnPosition: -10
 --- !u!114 &1484269314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8120,7 +8125,7 @@ Transform:
   m_GameObject: {fileID: 1993538269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 60.9, z: 0}
+  m_LocalPosition: {x: 0, y: 63.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

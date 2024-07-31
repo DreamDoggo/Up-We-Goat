@@ -149,7 +149,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.001801014, y: -0.022513986}
   serializedVersion: 2
-  m_Radius: 0.63434315
+  m_Radius: 0.5
 --- !u!114 &-4224188709181479338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationAmount: {x: 0, y: 0, z: 180}
   DeathTrigger: Death Platform
+  deathTimer: 1
 --- !u!82 &1512394740842634960
 AudioSource:
   m_ObjectHideFlags: 0

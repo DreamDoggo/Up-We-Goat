@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,33 +8,83 @@ public class randomFallingObstacles : MonoBehaviour
     [SerializeField] GameObject[] Obstacle = new GameObject[2];
     LevelManager levelman;
     [SerializeField] GameObject Player;
+    [Space(10)]
+    [Header("Rock/Snowball Settings")]
     [Range(-10f, 10f)]
-    [SerializeField] float MinX;
+    [SerializeField] float RockMinX;
     [Range(-10f, 10f)]
-    [SerializeField] float MaxX;
+    [SerializeField] float RockMaxX;
     [Range(0f, 10f)]
-    [SerializeField] float DistanceY;
+    [SerializeField] float RockDistanceY;
     [Range(0f, 10f)]
     [SerializeField] float DropTimer = 10;
     [SerializeField] float timer;
-    [SerializeField] AudioClip FallingSFX;
+    [SerializeField] AudioClip RockFallingSFX;
+    [Space(10)]
+    [Header("Meteor Settings\nMin must be lower than the max")]
+    [Range(0f, 10f)]
+    [SerializeField] float MeteorMinDistanceFromPlayer = 3f;
+    [Range(5f, 10f)]
+    [SerializeField] float MeteorMaxDistanceFromPlayer = 8f;
+    [Range(50f, 200f)]
+    [SerializeField] float MeteorMoveSpeed = 100f;
+    [SerializeField] float LeftXSpawnPosition = -8f;
+
     void Start(){
         levelman = FindFirstObjectByType<LevelManager>();
     }
     void Update(){
         timer = timer + Time.deltaTime;
         int level = LevelManager.Level-1;
-        Vector3 point = new Vector3(Random.Range(MinX, MaxX), Player.transform.position.y + DistanceY, Player.transform.position.z);
-        if (timer >= DropTimer){
+        if (level < 3) 
+        {
+            SpawnRock(level);
+        }
+        else if (level == 3)
+        {
+            SpawnMeteor();
+        }
+    }
+
+    void SpawnRock(int level) 
+    {
+        Vector3 point = new Vector3(Random.Range(RockMinX, RockMaxX), Player.transform.position.y + RockDistanceY, Player.transform.position.z);
+        if (timer >= DropTimer)
+        {
             try
             {
                 GameObject rockspawned = Instantiate(Obstacle[level], point, Player.transform.rotation);
                 AudioSource FallingAudioSource = rockspawned.GetComponent<AudioSource>();
-                FallingAudioSource.clip = FallingSFX;
+                FallingAudioSource.clip = RockFallingSFX;
                 FallingAudioSource.Play();
                 timer = 0;
-            } catch {
             }
+            catch
+            {
+            }
+        }
+    }
+
+    void SpawnMeteor() 
+    {
+        if (timer >= DropTimer) 
+        {
+            GameObject spawnedMeteor;
+            if (Random.Range(1, 3) == 1)
+            {
+                spawnedMeteor = Instantiate(Obstacle[3], 
+                    new Vector2(LeftXSpawnPosition, Player.transform.position.y + Random.Range(MeteorMinDistanceFromPlayer, MeteorMaxDistanceFromPlayer)),
+                    Quaternion.identity);
+            }
+            else 
+            {
+                spawnedMeteor = Instantiate(Obstacle[3],
+                    new Vector2(-LeftXSpawnPosition, Player.transform.position.y + Random.Range(MeteorMinDistanceFromPlayer, MeteorMaxDistanceFromPlayer)),
+                    Quaternion.identity);
+            }
+            Meteor meteorScript = spawnedMeteor.GetComponent<Meteor>();
+            meteorScript.MoveSpeed = MeteorMoveSpeed;
+            timer = 0;
         }
     }
 }
