@@ -8666,22 +8666,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5001615746929366782, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_SortMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001615746929366782, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_SortingLayer
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001615746929366782, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001615746929366782, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 298599209
-      objectReference: {fileID: 0}
     - target: {fileID: 5195684520902433355, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0269
@@ -8723,40 +8707,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: autoRandomSeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: SizeModule.enabled
+      propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: SizeModule.curve.scalar
+      propertyPath: UVModule.sprites.Array.size
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: SizeModule.separateAxes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: SizeModule.y.minMaxState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: SizeModule.z.minMaxState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: SizeModule.curve.minScalar
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: SizeModule.curve.minMaxState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6277896690309618172, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
