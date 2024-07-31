@@ -22,7 +22,7 @@ public class cloudPlatformFunctionality : MonoBehaviour
     for (float alpha = 1f; alpha >= 0; alpha -= 0.1f)
         {
             c.a = alpha;
-            renderer.material.color = c;
+            GetComponent<Renderer>().material.color = c;
             yield return null;
         }
 }
