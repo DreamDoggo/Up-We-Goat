@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PauseButton : MonoBehaviour
 {
     [SerializeField] GameObject ExitButton;
+    [SerializeField] GameObject PauseBackground;
     ButtonManager buttonManager;
 
     public static bool GameIsPaused = false;
@@ -20,6 +21,7 @@ public class PauseButton : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(OnClicked);
         GetComponent<Button>().onClick.AddListener(PauseGame); 
         ExitButton.SetActive(false);
+        PauseBackground.SetActive(false);
     }
 
     public void OnClicked() 
@@ -41,6 +43,7 @@ public class PauseButton : MonoBehaviour
             Time.timeScale = 0.0f;
             GameIsPaused = true;
             ExitButton.SetActive(true);
+            PauseBackground?.SetActive(true);
         }
     }
 
@@ -49,5 +52,6 @@ public class PauseButton : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         ExitButton.SetActive(false);
+        PauseBackground?.SetActive(false);
     }
 }

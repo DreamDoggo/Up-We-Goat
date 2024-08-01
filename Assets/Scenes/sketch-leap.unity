@@ -377,6 +377,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1903083947}
   - {fileID: 1537031152}
   - {fileID: 789394979}
   - {fileID: 1663456147}
@@ -692,6 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExitButton: {fileID: 1663456146}
+  PauseBackground: {fileID: 1903083946}
 --- !u!114 &619990585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7681,7 +7683,7 @@ GameObject:
   - component: {fileID: 1537031154}
   - component: {fileID: 1537031153}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8127,7 +8129,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1903083947}
   - {fileID: 1636981944}
   m_Father: {fileID: 356220167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8616,7 +8617,7 @@ GameObject:
   - component: {fileID: 1903083949}
   - component: {fileID: 1903083948}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Pause Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8634,11 +8635,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1663456147}
+  m_Father: {fileID: 356220167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -293.1346, y: -189.96233}
+  m_AnchoredPosition: {x: 2.0653992, y: -1.247757}
   m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903083948
@@ -8654,7 +8655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.16862746}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.33333334}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
