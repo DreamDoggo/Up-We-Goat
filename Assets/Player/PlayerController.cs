@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded() 
     {
         bool grounded =  Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
-        if (WasGrounded && grounded) 
+        if (!WasGrounded && grounded) 
         {
             JumpSource.PlayOneShot(LandSFX);
         }
