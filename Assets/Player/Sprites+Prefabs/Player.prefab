@@ -5049,7 +5049,9 @@ MonoBehaviour:
   CollectionText: {fileID: 0}
   GoatSource: {fileID: 6762362557789597419}
   JumpSource: {fileID: 976899955863777610}
-  JumpParticle: {fileID: 2379119862759021673, guid: a655818498c7b91409427f7a9003d530, type: 3}
+  JumpParticle:
+  - {fileID: 2379119862759021673, guid: a655818498c7b91409427f7a9003d530, type: 3}
+  - {fileID: 2379119862759021673, guid: afc84e587f613dc4e9da61d444f3a93f, type: 3}
   TimeBeforeDeath: 0.1
   HazardTag: obs
   IcyTag: slippery

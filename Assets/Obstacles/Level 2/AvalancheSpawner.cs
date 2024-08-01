@@ -50,7 +50,7 @@ public class AvalancheSpawner : MonoBehaviour
             }
             if (ParticlesExists)
             {
-                AvalancheSpawned.transform.position = new Vector2(AvalancheSpawned.transform.position.x, RefPlayer.transform.position.y + DistanceFromPlayer);
+                AvalancheSpawned.transform.position = new Vector2(AvalancheSpawned.transform.position.x, RefPlayer.transform.position.y + DistanceFromPlayer + 1);
             }
         }
     }

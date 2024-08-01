@@ -120,7 +120,9 @@ public class PlayerController : MonoBehaviour
             RefAnimator.SetFloat("Speed",1);
             horizontalInputs += Vector2.right;
             RefSprite.flipX = false;
-        } else {
+        } 
+        else
+        {
             RefAnimator.SetFloat("Speed",0);
         }
         horizontalInputs.Normalize();
@@ -129,7 +131,7 @@ public class PlayerController : MonoBehaviour
         // Old force based code: RefRigidBody.AddForce(horizontalInputs * MoveSpeed);
         if (OnIce) 
         {
-            RefRigidBody.AddForce(horizontalInputs * MoveSpeed * IceMoveSpeed);
+            RefRigidBody.velocity += new Vector2(horizontalInputs.x * MoveSpeed * IceMoveSpeed * Time.deltaTime, 0);
         }
         else 
         {
@@ -139,8 +141,16 @@ public class PlayerController : MonoBehaviour
 
         // Cap the player's velocity if it exceeds our maximum
         if (RefRigidBody.velocity.magnitude > MaximumVelocity) 
-        {
-            RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.normalized.x * MaximumVelocity, RefRigidBody.velocity.y);
+        {   
+            if (OnIce) 
+            {
+                RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.normalized.x * MaximumVelocity * .75f, RefRigidBody.velocity.y);
+            }
+            else 
+            {
+                RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.normalized.x * MaximumVelocity, RefRigidBody.velocity.y);
+            }
+
             if (horizontalInputs.sqrMagnitude <= 0.1f) 
             {
                 RefRigidBody.velocity = new Vector2(RefRigidBody.velocity.x * IceMovementDamping * Time.deltaTime, RefRigidBody.velocity.y);
@@ -226,6 +236,11 @@ public class PlayerController : MonoBehaviour
         else if (coll.tag == IcyTag)
         {
             OnIce = true;
+            if ((RefRigidBody.velocity.x >= MaximumVelocity * .75f || RefRigidBody.velocity.x <= -MaximumVelocity * .75f) && landPart == 1)
+            {
+                //RefRigidBody.AddForce(new Vector2(Mathf.Sign(RefRigidBody.velocity.x) * MoveSpeed * IceMoveSpeed * Time.deltaTime, 0));
+
+            }
         }
         else if (coll.tag == GrabTag)
         {
@@ -271,10 +286,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void jumpParticle(){
-        if ((LevelManager.Level == 1) || (LevelManager.Level == 4)){
-            Instantiate(JumpParticle[0], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
-        } else {
+        if (OnIce || LevelManager.Level == 3)
+        {
             Instantiate(JumpParticle[1], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
+        } else {
+            Instantiate(JumpParticle[0], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
         }
     }
 
