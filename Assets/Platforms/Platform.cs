@@ -21,7 +21,7 @@ public class Platform : MonoBehaviour
     {
         if (SceneManager.GetSceneByName("sketch-leap").isLoaded && DeathTrigger != null) 
         { 
-            if (transform.position.y < DeathTrigger.position.y) 
+            if (transform.position.y <= DeathTrigger.position.y+.25) 
             {
                 Destroy(gameObject);
             }
