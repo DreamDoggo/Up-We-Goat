@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1441368690}
-  distance: 3.4
+  distance: 3.7
 --- !u!4 &188873320
 Transform:
   m_ObjectHideFlags: 0
