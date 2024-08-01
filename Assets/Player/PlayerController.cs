@@ -214,7 +214,11 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D coll){
         if (coll.tag == HazardTag)
         {
+            if (collectables >= PlayerPrefs.GetInt("highscore")){
+                PlayerPrefs.SetInt("highscore", collectables);
+            }
             StartCoroutine(Death());
+            
         }
         else if (coll.tag == IcyTag)
         {
@@ -240,6 +244,9 @@ public class PlayerController : MonoBehaviour
     {
         if (particle.gameObject.tag == HazardTag) 
         {
+            if (collectables >= PlayerPrefs.GetInt("highscore")){
+                PlayerPrefs.SetInt("highscore", collectables);
+            }
             StartCoroutine(Death());
         }
     }
