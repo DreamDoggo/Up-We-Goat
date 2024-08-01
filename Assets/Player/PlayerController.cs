@@ -286,10 +286,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void jumpParticle(){
-        if ((LevelManager.Level == 1) || (LevelManager.Level == 4)){
-            Instantiate(JumpParticle[0], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
-        } else {
+        if (OnIce || LevelManager.Level == 3)
+        {
             Instantiate(JumpParticle[1], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
+        } else {
+            Instantiate(JumpParticle[0], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
         }
     }
 

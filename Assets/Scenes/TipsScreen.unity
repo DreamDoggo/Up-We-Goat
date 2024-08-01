@@ -270,18 +270,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icy Platform
       objectReference: {fileID: 0}
-    - target: {fileID: 3926366617315147873, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      propertyPath: m_Size.x
-      value: 3.4605503
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926366617315147873, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.017015517
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469905181774091373, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: cf186099e5a7c3d49822ad5a9db9c1a1, type: 2}
     - target: {fileID: 7682006360501412001, guid: b7e5f4e3956f0cb44b5e5e0c0b638ad8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.11
@@ -1334,6 +1322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09be44cad3ca58b4db3bdaf5335e2aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  textForDeathScreen: {fileID: 0}
+  congratsText: {fileID: 0}
 --- !u!114 &1466351073
 MonoBehaviour:
   m_ObjectHideFlags: 0

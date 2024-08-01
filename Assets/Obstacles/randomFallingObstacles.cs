@@ -24,9 +24,9 @@ public class randomFallingObstacles : MonoBehaviour
     [Header("Meteor Settings\nMin must be lower than the max")]
     [Range(0f, 10f)]
     [SerializeField] float MeteorMinDistanceFromPlayer = 3f;
-    [Range(5f, 10f)]
+    [Range(5f, 15f)]
     [SerializeField] float MeteorMaxDistanceFromPlayer = 8f;
-    [Range(50f, 200f)]
+    [Range(50f, 300f)]
     [SerializeField] float MeteorMoveSpeed = 100f;
     [SerializeField] float LeftXSpawnPosition = -8f;
 
