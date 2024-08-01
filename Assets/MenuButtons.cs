@@ -19,15 +19,24 @@ public class MenuButtons : MonoBehaviour
     public void debugResetHighscore(){
         PlayerPrefs.SetInt("highscore", 0);
     }
-    void Start(){
-        textForDeathScreen.text = PlayerPrefs.GetInt("score").ToString();
-        if (PlayerPrefs.GetInt("score") >= PlayerPrefs.GetInt("highscore")){
-            congratsText.text = "Highscore achieved!";
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "MainMenu") 
+        {
+            textForDeathScreen.text = PlayerPrefs.GetInt("score").ToString();
+            if (PlayerPrefs.GetInt("score") >= PlayerPrefs.GetInt("highscore"))
+            {
+                congratsText.text = "Highscore achieved!";
+            }
+
+            if (PlayerPrefs.GetInt("highscore") > 0)
+            {
+                string bleh = PlayerPrefs.GetInt("highscore").ToString();
+                Debug.Log(bleh);
+                scoreText.text = bleh;
+            }
+
         }
-        if (PlayerPrefs.GetInt("highscore") > 0){
-            string bleh = PlayerPrefs.GetInt("highscore").ToString();
-            Debug.Log(bleh);
-            scoreText.text = bleh;
-        }
+        
     }
 }
