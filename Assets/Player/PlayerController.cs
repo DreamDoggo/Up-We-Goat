@@ -211,6 +211,7 @@ public class PlayerController : MonoBehaviour
             {
                 JumpSource.PlayOneShot(JumpSFX);
             }
+            WasGrounded = false;
         }
 
         if ((Input.GetKeyUp(JumpKey) || Input.GetKeyUp(AltJumpKey) || Input.GetKeyUp(SecondAltJumpKey)) && RefRigidBody.velocity.y > 0f) 
@@ -228,7 +229,7 @@ public class PlayerController : MonoBehaviour
         {
             JumpSource.PlayOneShot(LandSFX);
         }
-        WasGrounded = grounded;
+        WasGrounded = true;
         return grounded;
     }
 
