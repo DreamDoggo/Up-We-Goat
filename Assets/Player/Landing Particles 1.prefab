@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6969002894970146952}
   - component: {fileID: 7390846627596621806}
   m_Layer: 7
-  m_Name: Landing Particles
+  m_Name: Landing Particles 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1546,7 +1546,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: a5285a0f9a76d4b2c94748f1584699ec, type: 3}
+    - sprite: {fileID: 21300000, guid: ca117d8663e9240c6bd5f680fb599c22, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
