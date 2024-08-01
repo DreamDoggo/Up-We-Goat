@@ -296,8 +296,10 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Death()
     {
+        RefAnimator.SetTrigger("Die");
         yield return new WaitForSeconds(TimeBeforeDeath);
         collectables = 0;
+        RefAnimator.ResetTrigger("Die");
         SceneManager.LoadScene("GameOver");
         yield return null;
     }
