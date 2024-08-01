@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Text CollectionText;
     [SerializeField] AudioSource GoatSource;
     [SerializeField] AudioSource JumpSource; 
-    [SerializeField] GameObject JumpParticle; 
+    [SerializeField] GameObject[] JumpParticle = new GameObject[2]; 
 
     [Header("Misc")]
     [Tooltip("How many collectable thingies the player has collected")]
@@ -271,7 +271,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void jumpParticle(){
-        Instantiate(JumpParticle, new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
+        if ((LevelManager.Level == 1) || (LevelManager.Level == 4)){
+            Instantiate(JumpParticle[0], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
+        } else {
+            Instantiate(JumpParticle[1], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
+        }
     }
 
     IEnumerator Death()
