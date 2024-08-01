@@ -9,7 +9,7 @@ public class Platform : MonoBehaviour
 
     Transform DeathTrigger = null;
 
-    private void Awake()
+    private void Start()
     {
         if (SceneManager.GetSceneByName("sketch-leap").isLoaded) 
         {

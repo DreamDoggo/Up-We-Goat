@@ -8384,56 +8384,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1894715022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2447340275648093585, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
-  m_PrefabInstance: {fileID: 6734327365564926366}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1894715027
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894715022}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.008183956}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.97, y: 0.61}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.97, y: 0.4872427}
-  m_EdgeRadius: 0
 --- !u!1 &1902421552
 GameObject:
   m_ObjectHideFlags: 0
@@ -9270,6 +9220,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 4469905181774091373, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7682006360501412001, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08
@@ -9313,10 +9267,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2447340275648093585, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1894715027}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caaf7fd66a08ee844b03086bdb2575ae, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -9325,7 +9276,6 @@ SceneRoots:
   - {fileID: 419896959}
   - {fileID: 356220167}
   - {fileID: 6417916819434224910}
-  - {fileID: 6734327365564926366}
   - {fileID: 2134877458}
   - {fileID: 188873320}
   - {fileID: 781206825}
@@ -9335,3 +9285,4 @@ SceneRoots:
   - {fileID: 1056369158}
   - {fileID: 532294792}
   - {fileID: 1980677894}
+  - {fileID: 6734327365564926366}
