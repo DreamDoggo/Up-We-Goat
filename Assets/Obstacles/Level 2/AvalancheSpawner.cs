@@ -46,7 +46,7 @@ public class AvalancheSpawner : MonoBehaviour
         {
             if (WarningExists) 
             {
-                WarningSpawned.transform.position = new Vector2(WarningSpawned.transform.position.x, RefPlayer.transform.position.y); 
+                WarningSpawned.transform.position = new Vector2(WarningSpawned.transform.position.x, RefPlayer.transform.position.y+2); 
             }
             if (ParticlesExists)
             {
