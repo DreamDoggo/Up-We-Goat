@@ -59,7 +59,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator RefAnimator;
     [SerializeField] Text CollectionText;
     [SerializeField] AudioSource GoatSource;
-    [SerializeField] AudioSource JumpSource; 
+    [SerializeField] AudioSource JumpSource;
+    [SerializeField] AudioSource DeathSource;
     [SerializeField] GameObject[] JumpParticle = new GameObject[2]; 
 
     [Header("Misc")]
@@ -83,11 +84,15 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sound Effects")]
     [SerializeField] AudioClip JumpSFX;
+    [SerializeField] AudioClip LandSFX;
     [SerializeField] AudioClip CollectableSFX;
+    [SerializeField] AudioClip DeathSFX;
+
     private float CoyoteTimeCounter;
     private float JumpBufferCounter;
     private bool OnIce;
     private int landPart = 0;
+    private bool WasGrounded;
 
     private void Start()
     {
@@ -218,7 +223,13 @@ public class PlayerController : MonoBehaviour
     // If the player is close enough to the ground, consider them to be grounded
     public bool IsGrounded() 
     {
-        return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
+        bool grounded =  Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
+        if (WasGrounded && grounded) 
+        {
+            JumpSource.PlayOneShot(LandSFX);
+        }
+        WasGrounded = grounded;
+        return grounded;
     }
 
     void OnTriggerEnter2D(Collider2D coll){
@@ -297,6 +308,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Death()
     {
         RefAnimator.SetTrigger("Die");
+        DeathSource.PlayOneShot(DeathSFX);
         yield return new WaitForSeconds(TimeBeforeDeath);
         collectables = 0;
         RefAnimator.ResetTrigger("Die");
