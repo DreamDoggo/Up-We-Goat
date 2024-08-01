@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
             {
                 JumpSource.PlayOneShot(JumpSFX);
             }
-            WasGrounded = false;
+            StartCoroutine(WasGroundedChanger());
         }
 
         if ((Input.GetKeyUp(JumpKey) || Input.GetKeyUp(AltJumpKey) || Input.GetKeyUp(SecondAltJumpKey)) && RefRigidBody.velocity.y > 0f) 
@@ -304,6 +304,12 @@ public class PlayerController : MonoBehaviour
         } else {
             Instantiate(JumpParticle[0], new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
         }
+    }
+
+    private IEnumerator WasGroundedChanger() 
+    {
+        yield return new WaitForSeconds(.3f);
+        WasGrounded = false;
     }
 
     IEnumerator Death()
