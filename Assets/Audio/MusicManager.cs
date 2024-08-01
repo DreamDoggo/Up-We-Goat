@@ -27,7 +27,6 @@ public class MusicManager : MonoBehaviour
     bool MusicPlaying = false;
     bool ComingFromGameOver = false;
     bool InSpace = false;
-    int conMusic = 0;
     
 
     void Awake()
@@ -85,7 +84,6 @@ public class MusicManager : MonoBehaviour
 
                 // Tips
                 case 2:
-                    conMusic = 1;
                     break;
 
                 // Game Over
@@ -97,7 +95,6 @@ public class MusicManager : MonoBehaviour
                     
                 // I assume credits
                 case 4:
-                    conMusic = 1;
                     break;
                 default:
                     StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
