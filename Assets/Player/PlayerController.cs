@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Misc")]
     [Tooltip("How many collectable thingies the player has collected")]
-    [SerializeField] int grabby = 0;
+    [SerializeField] public static int collectables = 0;
     [Tooltip("How much time it takes for the player to die")]
     [Range(0f, 10f)]
     [SerializeField] float TimeBeforeDeath = 5;
@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // If the player is close enough to the ground, consider them to be grounded
-    private bool IsGrounded() 
+    public bool IsGrounded() 
     {
         return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
     }
@@ -220,8 +220,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (coll.tag == GrabTag)
         {
-            grabby++;
-            CollectionText.text = grabby.ToString();
+            collectables++;
+            CollectionText.text = collectables.ToString();
             AudioSource.PlayClipAtPoint(CollectableSFX, transform.position);
             GoatSource.PlayOneShot(CollectableSFX);
             Destroy (coll.gameObject);
@@ -248,7 +248,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Death()
     {
-        yield return new WaitForSeconds(TimeBeforeDeath);
-        SceneManager.LoadScene("GameOver");
+        //yield return new WaitForSeconds(TimeBeforeDeath);
+        //collectables = 0;
+        //SceneManager.LoadScene("GameOver");
+        yield return null;
     }
 }

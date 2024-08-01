@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 4469905181774091373}
   - component: {fileID: 3926366617315147873}
   - component: {fileID: -4980184894501095859}
-  - component: {fileID: 8686522912619231858}
-  - component: {fileID: 2625334367018444392}
+  - component: {fileID: 1586490027089179310}
   m_Layer: 6
   m_Name: Cloud Platform
   m_TagString: Untagged
@@ -186,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.036396414}
+  m_Offset: {x: 0.00071793795, y: 0.18030697}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -197,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.97, y: 0.68279284}
+  m_Size: {x: 2.9997745, y: 0.16678941}
   m_EdgeRadius: 0
 --- !u!114 &-4980184894501095859
 MonoBehaviour:
@@ -212,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathTriggerName: Death Platform
---- !u!114 &8686522912619231858
+--- !u!114 &1586490027089179310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,20 +220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2447340275648093585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 561bfe700ca2f86459254bb2299b5f00, type: 3}
+  m_Script: {fileID: 11500000, guid: ae8ec559908d174418a7d13fff486334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTimer: 0.01
---- !u!114 &2625334367018444392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2447340275648093585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 561bfe700ca2f86459254bb2299b5f00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTimer: 0.25
+  fadeTimer: 0.4

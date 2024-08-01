@@ -10,5 +10,7 @@ public class AudioPlayer : MonoBehaviour
     public void PlayStep()
     {
         AudioSource.PlayClipAtPoint(Step, transform.position);
-    }  
+    }
+
+    
 }

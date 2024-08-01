@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudPlatformFunctionality : MonoBehaviour
+public class CloudPlatform : MonoBehaviour
 {
     [SerializeField] float fadeTimer = .01f;
-    
-    void OnTriggerEnter2D(Collider2D coll){
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
         if (coll.name == "Player")
         {
             PlayerController controller = coll.GetComponent<PlayerController>();
@@ -26,7 +27,7 @@ public class CloudPlatformFunctionality : MonoBehaviour
             GetComponent<Renderer>().material.color = color;
             yield return null;
         }
-        Destroy(gameObject);    
+        Destroy(gameObject);
     }
 
     private void OnDestroy()

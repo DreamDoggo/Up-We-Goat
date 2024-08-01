@@ -8,6 +8,8 @@ public class Meteor : MonoBehaviour
     [SerializeField] string DeathTrigger = "Death Platform";
     public float MoveSpeed = 1f;
     Rigidbody2D RefRigidBody;
+    SpriteRenderer RefSprite;
+    CircleCollider2D RefCollider;
 
     public float LeftRotationAmount = 330f;
     public float RightRotationAmount = 210f;
@@ -18,6 +20,8 @@ public class Meteor : MonoBehaviour
     private void Awake()
     {
         RefRigidBody = GetComponent<Rigidbody2D>();
+        RefSprite = GetComponent<SpriteRenderer>();
+        RefCollider = GetComponent<CircleCollider2D>();
     }
 
     // Start is called before the first frame update
@@ -25,13 +29,18 @@ public class Meteor : MonoBehaviour
     {
         LeftRotator = Quaternion.AngleAxis(LeftRotationAmount, Vector3.forward);
         RightRotator = Quaternion.AngleAxis(RightRotationAmount, Vector3.forward);
+        RefSprite.flipX = true;
         if (Mathf.Sign(transform.position.x) <= -1) 
         {
             ComingFromLeft = true;
+            RefSprite.flipY = true;
+            RefCollider.offset = new Vector2(1f, -.3f);
         }
         else 
         {
             ComingFromLeft = false;
+            RefSprite.flipY = false;
+            RefCollider.offset = new Vector2(1f, .3f);
         }
 
         if (ComingFromLeft) 
