@@ -2284,9 +2284,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 4ee5b9a2af98ca645bbbc352147a5a51, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.231
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9252,7 +9252,7 @@ PrefabInstance:
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: LandSFX
       value: 
-      objectReference: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
+      objectReference: {fileID: 8300000, guid: 4ee5b9a2af98ca645bbbc352147a5a51, type: 3}
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: LandSource
       value: 
