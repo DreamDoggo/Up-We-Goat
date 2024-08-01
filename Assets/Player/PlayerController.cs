@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump() 
     {
+        //Debug.Log(WasGrounded);
         // Handle Coyote Time
         if (IsGrounded()) 
         {
@@ -211,6 +212,7 @@ public class PlayerController : MonoBehaviour
             {
                 JumpSource.PlayOneShot(JumpSFX);
             }
+            StopCoroutine(WasGroundedChanger());
             StartCoroutine(WasGroundedChanger());
         }
 
@@ -225,9 +227,11 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded() 
     {
         bool grounded =  Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
-        if (!WasGrounded && grounded) 
+        if (WasGrounded == false && grounded) 
         {
             JumpSource.PlayOneShot(LandSFX);
+            Debug.Log("Played LandSFX");
+            
         }
         WasGrounded = true;
         return grounded;
@@ -308,7 +312,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator WasGroundedChanger() 
     {
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.4f);
         WasGrounded = false;
     }
 

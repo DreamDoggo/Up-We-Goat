@@ -9154,6 +9154,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: LandSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
+    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: DeathSource
       value: 
       objectReference: {fileID: 1441368691}
