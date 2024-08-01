@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
     private bool OnIce;
     private int landPart = 0;
     private bool WasGrounded;
+    private bool isDead = false;
 
     private void Start()
     {
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (PauseButton.GameIsPaused) { return; }
+        if (isDead == true) { return; }
         Move();
         Jump();
         AnimationChecks();
@@ -314,6 +316,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Death()
     {
+        isDead = true;
         RefAnimator.SetTrigger("Die");
         DeathSource.PlayOneShot(DeathSFX);
         yield return new WaitForSeconds(TimeBeforeDeath);
