@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource GoatSource;
     [SerializeField] AudioSource JumpSource;
     [SerializeField] AudioSource DeathSource;
+    [SerializeField] AudioSource LandSource;
     [SerializeField] GameObject[] JumpParticle = new GameObject[2]; 
 
     [Header("Misc")]
@@ -177,7 +178,6 @@ public class PlayerController : MonoBehaviour
 
     public void Jump() 
     {
-        //Debug.Log(WasGrounded);
         // Handle Coyote Time
         if (IsGrounded()) 
         {
@@ -229,13 +229,16 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded() 
     {
         bool grounded =  Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
-        if (WasGrounded == false && grounded) 
+        if (WasGrounded == false && grounded == true) 
         {
-            JumpSource.PlayOneShot(LandSFX);
+            LandSource.PlayOneShot(LandSFX);
             Debug.Log("Played LandSFX");
             
         }
-        WasGrounded = true;
+        if (RefRigidBody.velocity.y <= 0 && grounded) 
+        {
+            WasGrounded = true;
+        }
         return grounded;
     }
 
@@ -316,6 +319,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(.4f);
         WasGrounded = false;
+        Debug.Log(WasGrounded);
     }
 
     IEnumerator Death()
