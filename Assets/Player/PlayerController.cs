@@ -98,8 +98,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseButton.GameIsPaused) { return; }
         Move();
         Jump();
+        AnimationChecks();
     }
 
     public void Move() 
@@ -242,15 +244,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void AnimationChecks() 
+    {
+        RefAnimator.SetFloat("yVelocity", RefRigidBody.velocity.y);
+        if (RefRigidBody.velocity.y < 0 && IsGrounded()) 
+        {
+            RefAnimator.SetBool("isLanding", true);
+        }
+        else if (RefRigidBody.velocity.y > 0 && IsGrounded())
+        {
+            RefAnimator.SetBool("isLanding", false);
+        }
+    }
+
     void jumpParticle(){
         Instantiate(JumpParticle, new Vector3(GroundCheck.transform.position.x, GroundCheck.transform.position.y), Quaternion.identity);
     }
 
     IEnumerator Death()
     {
-        //yield return new WaitForSeconds(TimeBeforeDeath);
-        //collectables = 0;
-        //SceneManager.LoadScene("GameOver");
+        yield return new WaitForSeconds(TimeBeforeDeath);
+        collectables = 0;
+        SceneManager.LoadScene("GameOver");
         yield return null;
     }
 }

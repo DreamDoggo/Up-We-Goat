@@ -23,7 +23,10 @@ public class LevelManager : MonoBehaviour
             {
                 transform.position = new Vector2(0, gameManager.NextInfiniteSpawnPosition.y - 5f);
                 MusicManager musicManager = FindFirstObjectByType<MusicManager>();
-                musicManager.Crossfade(musicManager.SpaceMusic, musicManager.SpaceMusicVolume);
+                if (musicManager != null) 
+                {
+                    musicManager.Crossfade(musicManager.SpaceMusic, musicManager.SpaceMusicVolume);
+                }
             }
             if (Level != 4)
             {

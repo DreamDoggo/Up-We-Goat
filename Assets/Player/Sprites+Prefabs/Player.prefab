@@ -81,7 +81,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 0
   startDelay:
@@ -5050,7 +5050,6 @@ MonoBehaviour:
   GoatSource: {fileID: 6762362557789597419}
   JumpSource: {fileID: 976899955863777610}
   JumpParticle: {fileID: 2379119862759021673, guid: a655818498c7b91409427f7a9003d530, type: 3}
-  grabby: 0
   TimeBeforeDeath: 0.1
   HazardTag: obs
   IcyTag: slippery

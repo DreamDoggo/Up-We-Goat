@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour
 {
     [Tooltip("How long to wait in seconds after a button is pressed before playing its sound effect")]
-    [SerializeField] float ButtonClickSoundDelay = .1f;
-    [SerializeField] AudioClip ButtonClickSound;
+    [SerializeField] public float ButtonClickSoundDelay = .1f;
+    [SerializeField] public AudioClip ButtonClickSound;
 
     private AudioSource SFXPlayer;
 
