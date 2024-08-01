@@ -216,6 +216,9 @@ public class PlayerController : MonoBehaviour
         {
             if (collectables >= PlayerPrefs.GetInt("highscore")){
                 PlayerPrefs.SetInt("highscore", collectables);
+                PlayerPrefs.SetInt("score", collectables);
+            } else {
+                PlayerPrefs.SetInt("score", collectables);
             }
             StartCoroutine(Death());
             
@@ -246,6 +249,9 @@ public class PlayerController : MonoBehaviour
         {
             if (collectables >= PlayerPrefs.GetInt("highscore")){
                 PlayerPrefs.SetInt("highscore", collectables);
+                PlayerPrefs.SetInt("score", collectables);
+            } else {
+                PlayerPrefs.SetInt("score", collectables);
             }
             StartCoroutine(Death());
         }

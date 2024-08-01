@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class MenuButtons : MonoBehaviour
 {
     [SerializeField] Text scoreText;
+    [SerializeField] Text textForDeathScreen;
+    [SerializeField] Text congratsText;
     public void changeScene(string scene){
         PauseButton.GameIsPaused = false;
         SceneManager.LoadScene(scene);
@@ -18,6 +20,10 @@ public class MenuButtons : MonoBehaviour
         PlayerPrefs.SetInt("highscore", 0);
     }
     void Start(){
+        textForDeathScreen.text = PlayerPrefs.GetInt("score").ToString();
+        if (PlayerPrefs.GetInt("score") >= PlayerPrefs.GetInt("highscore")){
+            congratsText.text = "Highscore achieved!";
+        }
         if (PlayerPrefs.GetInt("highscore") > 0){
             string bleh = PlayerPrefs.GetInt("highscore").ToString();
             Debug.Log(bleh);
