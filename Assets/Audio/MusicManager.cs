@@ -27,6 +27,7 @@ public class MusicManager : MonoBehaviour
     bool MusicPlaying = false;
     bool ComingFromGameOver = false;
     bool InSpace = false;
+    
 
     void Awake()
     {
@@ -36,12 +37,12 @@ public class MusicManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         SwitchMusic(RefAudioSource1, TitleMusic);
         StartCoroutine(StartFade(RefAudioSource1, 2f, 1f));
     }
@@ -65,7 +66,7 @@ public class MusicManager : MonoBehaviour
                         ComingFromGameOver = false;
                         break;
                     }
-                    Crossfade(TitleMusic, TitleMusicVolume);
+                    //Crossfade(TitleMusic, TitleMusicVolume);
                     break;
 
                 // Gameplay
@@ -83,8 +84,6 @@ public class MusicManager : MonoBehaviour
 
                 // Tips
                 case 2:
-                    StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
-                    MusicPlaying = false;
                     break;
 
                 // Game Over
@@ -93,7 +92,10 @@ public class MusicManager : MonoBehaviour
                     DisableLooping();
                     ComingFromGameOver = true;
                     break;
-
+                    
+                // I assume credits
+                case 4:
+                    break;
                 default:
                     StartCoroutine(StartFade(FindCurrentlyPlayingAudioSource(), 2f, 0f));
                     MusicPlaying = false;
