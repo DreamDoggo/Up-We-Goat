@@ -17,13 +17,17 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         RefGameManager = FindFirstObjectByType<GameManager>();
-        RefAudioSource = RefCamera.GetComponent<AudioSource>();
-        RefAudioSource.playOnAwake = false;
+        if (RefCamera != null ) 
+        {
+            RefAudioSource = RefCamera.GetComponent<AudioSource>();
+            RefAudioSource.playOnAwake = false;
+        }
         Level = 1;
     }
 
     private void Start()
     {
+        if (RefAudioSource == null ) { return; }
         RefAudioSource.volume = TransitionVolume;
         RefAudioSource.clip = TransitionAudio;
 
@@ -41,7 +45,7 @@ public class LevelManager : MonoBehaviour
                     musicManager.Crossfade(musicManager.SpaceMusic, musicManager.SpaceMusicVolume);
                 }
             }
-            if (Level != 4)
+            if (Level != 4 && RefAudioSource != null)
             {
                 Level++;
                 RefAudioSource.Play();
