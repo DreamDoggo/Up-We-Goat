@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D RefRigidBody;
     [SerializeField] BoxCollider2D RefCollider;
     [SerializeField] Animator RefAnimator;
+    [SerializeField] BasketManager RefBasket;
     [SerializeField] Text CollectionText;
     [SerializeField] AudioSource GoatSource;
     [SerializeField] AudioSource JumpSource;
@@ -97,6 +98,11 @@ public class PlayerController : MonoBehaviour
     private int landPart = 0;
     private bool WasGrounded;
     private bool isDead = false;
+
+    private void Awake()
+    {
+        RefBasket = FindFirstObjectByType<BasketManager>();
+    }
 
     private void Start()
     {
@@ -269,6 +275,8 @@ public class PlayerController : MonoBehaviour
             collectables++;
             CollectionText.text = collectables.ToString();
             AudioSource.PlayClipAtPoint(CollectableSFX, transform.position);
+            RefBasket.ConvertCollectableToImage(coll.gameObject);
+            StartCoroutine(RefBasket.DropInBasket());
             GoatSource.PlayOneShot(CollectableSFX);
             Destroy (coll.gameObject);
         }
