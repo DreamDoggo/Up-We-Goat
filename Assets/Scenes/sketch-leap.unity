@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefCamera: {fileID: 0}
-  TransitionVolume: 1
+  TransitionVolume: 0.25
   TransitionAudio: {fileID: 8300000, guid: e7af3cc2b0ec17843bc8a8e52dcbc753, type: 3}
 --- !u!82 &1445791570
 AudioSource:
@@ -2513,7 +2513,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -8128,8 +8128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefCamera: {fileID: 0}
-  TransitionVolume: 1
-  TransitionAudio: {fileID: 0}
+  TransitionVolume: 0.25
+  TransitionAudio: {fileID: 8300000, guid: e7af3cc2b0ec17843bc8a8e52dcbc753, type: 3}
 --- !u!1 &1636981943
 GameObject:
   m_ObjectHideFlags: 0
@@ -8478,7 +8478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefCamera: {fileID: 419896957}
-  TransitionVolume: 1
+  TransitionVolume: 0.25
   TransitionAudio: {fileID: 8300000, guid: e7af3cc2b0ec17843bc8a8e52dcbc753, type: 3}
 --- !u!4 &1696997810
 Transform:
