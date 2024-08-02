@@ -26,12 +26,6 @@ public class ButtonManager : MonoBehaviour
         SFXPlayer = GetComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-        
-        
-    }
-
     public void StartGame()
     {
         PlayButtonSoundEffect(ButtonClickSound, ButtonClickSoundDelay);

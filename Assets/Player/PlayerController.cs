@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("How quickly to slow the player down after movement keys are not held down on ice" +
         "Lower values produce larger results")]
-    // Relic of the old force based movement system
     [Range(-1f, 3f)]
     [SerializeField] float IceMovementDamping = .98f;
     
@@ -232,7 +231,6 @@ public class PlayerController : MonoBehaviour
         if (WasGrounded == false && grounded == true) 
         {
             LandSource.PlayOneShot(LandSFX);
-            Debug.Log("Played LandSFX");
             
         }
         if (RefRigidBody.velocity.y <= 0 && grounded) 
@@ -319,7 +317,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(.4f);
         WasGrounded = false;
-        Debug.Log(WasGrounded);
     }
 
     IEnumerator Death()

@@ -14,14 +14,31 @@ public class PauseButton : MonoBehaviour
     private void Awake()
     {
         buttonManager = FindObjectOfType<ButtonManager>();
+        GetComponent<Button>().onClick.AddListener(OnClicked);
+        GetComponent<Button>().onClick.AddListener(PauseGame); 
+        MusicManager.ComingFromPause = false;
     }
 
     private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(OnClicked);
-        GetComponent<Button>().onClick.AddListener(PauseGame); 
         ExitButton.SetActive(false);
         PauseBackground.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            OnClicked();
+            if (GameIsPaused) 
+            {
+                UnpauseGame();
+            }
+            else 
+            {
+                PauseGame();
+            }
+        }
     }
 
     public void OnClicked() 
@@ -30,6 +47,7 @@ public class PauseButton : MonoBehaviour
         {
             buttonManager.PlayButtonSoundEffect(buttonManager.ButtonClickSound, buttonManager.ButtonClickSoundDelay);
         }
+        MusicManager.ComingFromPause = !MusicManager.ComingFromPause;
     }
 
     public void PauseGame() 

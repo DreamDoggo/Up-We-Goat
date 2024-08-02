@@ -24,8 +24,9 @@ public class MusicManager : MonoBehaviour
     [Space(10)]
     [SerializeField] AudioSource RefAudioSource1;
     [SerializeField] AudioSource RefAudioSource2;
-    bool MusicPlaying = false;
+    public static bool ComingFromPause = false;
     bool ComingFromGameOver = false;
+    bool MusicPlaying = false;
     bool InSpace = false;
     
 
@@ -58,14 +59,16 @@ public class MusicManager : MonoBehaviour
             {
                 // Main Menu
                 case 0:
-                    if (ComingFromGameOver)
+                    if (ComingFromGameOver || ComingFromPause)
                     {
                         ClearClips();
                         SwitchMusic(RefAudioSource1, TitleMusic);
                         StartCoroutine(StartFade(RefAudioSource1, CrossfadeDuration, TitleMusicVolume));
                         ComingFromGameOver = false;
+                        ComingFromPause = false;
                         break;
                     }
+
                     //Crossfade(TitleMusic, TitleMusicVolume);
                     break;
 
@@ -143,8 +146,13 @@ public class MusicManager : MonoBehaviour
 
     public void ClearClips() 
     {
-        RefAudioSource1.clip = null;
-        RefAudioSource2.clip = null;
+        AudioSource[] sources = GetComponents<AudioSource>();
+        foreach (AudioSource source in sources) 
+        {
+            source.clip = null;
+            source.enabled = true;
+            source.volume = 0;
+        }
     }
 
     public void SwitchMusic(AudioSource audioSource, AudioClip newClip) 

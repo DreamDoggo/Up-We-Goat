@@ -186,15 +186,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Escape)) 
-        {
-            Application.Quit();
-        }
-    }
-
     // Obstacles
     public void SpawnRocks() { }
     public void SpawnSnowballs() { }
