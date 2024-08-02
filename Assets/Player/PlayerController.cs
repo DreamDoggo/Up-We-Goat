@@ -336,7 +336,10 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
             RefAnimator.SetTrigger("Die");
-            DeathSource.PlayOneShot(DeathSFX);
+            if (DeathSource.isPlaying == false) 
+            {
+                DeathSource.PlayOneShot(DeathSFX);
+            }
             yield return new WaitForSeconds(TimeBeforeDeath);
             collectables = 0;
             RefAnimator.ResetTrigger("Die");

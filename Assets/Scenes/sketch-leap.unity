@@ -2499,7 +2499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55dac70c84b869945a5da8ddb195dc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RefCamera: {fileID: 0}
+  RefCamera: {fileID: 419896957}
   TransitionVolume: 1
   TransitionAudio: {fileID: 8300000, guid: e7af3cc2b0ec17843bc8a8e52dcbc753, type: 3}
 --- !u!82 &1445791570
@@ -8127,7 +8127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55dac70c84b869945a5da8ddb195dc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RefCamera: {fileID: 0}
+  RefCamera: {fileID: 419896957}
   TransitionVolume: 1
   TransitionAudio: {fileID: 0}
 --- !u!1 &1636981943
