@@ -239,7 +239,6 @@ public class PlayerController : MonoBehaviour
         bool grounded =  Physics2D.OverlapCircle(GroundCheck.position, 0.2f, GroundLayer);
         if (WasGrounded == false && grounded == true) 
         {
-            Debug.Log("play landSFX");
             LandSource.PlayOneShot(LandSFX);
             
         }
