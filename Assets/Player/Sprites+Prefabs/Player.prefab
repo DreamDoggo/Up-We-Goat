@@ -5050,6 +5050,7 @@ MonoBehaviour:
   RefRigidBody: {fileID: 8262080058742410912}
   RefCollider: {fileID: 2963043559892253942}
   RefAnimator: {fileID: 3413090121446060851}
+  RefBasket: {fileID: 0}
   CollectionText: {fileID: 0}
   GoatSource: {fileID: 6762362557789597419}
   JumpSource: {fileID: 976899955863777610}
@@ -5058,7 +5059,8 @@ MonoBehaviour:
   JumpParticle:
   - {fileID: 2379119862759021673, guid: a655818498c7b91409427f7a9003d530, type: 3}
   - {fileID: 2379119862759021673, guid: afc84e587f613dc4e9da61d444f3a93f, type: 3}
-  TimeBeforeDeath: 0.75
+  ConqueredDeath: 0
+  TimeBeforeDeath: 2.47
   HazardTag: obs
   IcyTag: slippery
   GrabTag: grab
@@ -5067,9 +5069,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   JumpSFX: {fileID: 8300000, guid: db6edef3c0f6cb84e95f83ae22cdd63d, type: 3}
-  LandSFX: {fileID: 8300000, guid: 4ee5b9a2af98ca645bbbc352147a5a51, type: 3}
+  LandSFX: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
   CollectableSFX: {fileID: 8300000, guid: 28e57bfd20393be4abcaf4f6fecac6a5, type: 3}
-  DeathSFX: {fileID: 0}
+  DeathSFX: {fileID: 8300000, guid: 132b5d803c6a9dc409bc6e631c7b21b8, type: 3}
 --- !u!50 &8262080058742410912
 Rigidbody2D:
   serializedVersion: 4
@@ -5777,9 +5779,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 132b5d803c6a9dc409bc6e631c7b21b8, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.225
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5873,9 +5875,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4ee5b9a2af98ca645bbbc352147a5a51, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.231
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0

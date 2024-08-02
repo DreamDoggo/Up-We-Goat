@@ -8579,7 +8579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.0653992, y: -1.247757}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903083948
@@ -9193,41 +9193,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: LandSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
-    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: DeathSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 132b5d803c6a9dc409bc6e631c7b21b8, type: 3}
-    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: CollectionText
       value: 
       objectReference: {fileID: 789394980}
-    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: TimeBeforeDeath
-      value: 2.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 1374700260551256411, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_Volume
-      value: 0.225
-      objectReference: {fileID: 0}
-    - target: {fileID: 1374700260551256411, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 132b5d803c6a9dc409bc6e631c7b21b8, type: 3}
-    - target: {fileID: 1374700260551256411, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_Volume
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
     - target: {fileID: 3941000375643947615, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Name
       value: Player
