@@ -9623,7 +9623,7 @@ PrefabInstance:
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: LandSFX
       value: 
-      objectReference: {fileID: 8300000, guid: b6ef347887f8b5e4dbdf1558a59b30e9, type: 3}
+      objectReference: {fileID: 8300000, guid: 7cea76ce9a54ba24e8c702d8898c969f, type: 3}
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: LandSource
       value: 
@@ -9700,6 +9700,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5467528128285182982, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_Pitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467528128285182982, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7cea76ce9a54ba24e8c702d8898c969f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
