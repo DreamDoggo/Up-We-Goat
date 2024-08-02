@@ -8,12 +8,25 @@ public class LevelManager : MonoBehaviour
     [Tooltip("The level which the player is currently in")]
     public static int Level = 1;
 
-    GameManager gameManager;
+    GameManager RefGameManager;
+    [SerializeField] GameObject RefCamera;
+    AudioSource RefAudioSource;
+    [SerializeField] float TransitionVolume = 1.0f;
+    [SerializeField] AudioClip TransitionAudio;
 
     private void Awake()
     {
-        gameManager = FindFirstObjectByType<GameManager>();
+        RefGameManager = FindFirstObjectByType<GameManager>();
+        RefAudioSource = RefCamera.GetComponent<AudioSource>();
+        RefAudioSource.playOnAwake = false;
         Level = 1;
+    }
+
+    private void Start()
+    {
+        RefAudioSource.volume = TransitionVolume;
+        RefAudioSource.clip = TransitionAudio;
+
     }
 
     void OnTriggerEnter2D(Collider2D coll){
@@ -21,7 +34,7 @@ public class LevelManager : MonoBehaviour
         {
             if (Level == 3)
             {
-                transform.position = new Vector2(0, gameManager.NextInfiniteSpawnPosition.y - 5f);
+                transform.position = new Vector2(0, RefGameManager.NextInfiniteSpawnPosition.y - 5f);
                 MusicManager musicManager = FindFirstObjectByType<MusicManager>();
                 if (musicManager != null) 
                 {
@@ -31,8 +44,10 @@ public class LevelManager : MonoBehaviour
             if (Level != 4)
             {
                 Level++;
+                RefAudioSource.Play();
+                
             }
-            gameManager.PlaceNewLevel();
+            RefGameManager.PlaceNewLevel();
             if (Level != 4) 
             {
                 Destroy(gameObject);
@@ -45,8 +60,8 @@ public class LevelManager : MonoBehaviour
     {
         if (Level == 4) 
         {
-            transform.position = new Vector2(0, gameManager.NextInfiniteSpawnPosition.y - 5f);
-            gameManager.PlaceNewLevel();
+            transform.position = new Vector2(0, RefGameManager.NextInfiniteSpawnPosition.y - 5f);
+            RefGameManager.PlaceNewLevel();
         }
     }
 }
