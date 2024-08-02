@@ -59,7 +59,7 @@ public class MusicManager : MonoBehaviour
             {
                 // Main Menu
                 case 0:
-                    if (ComingFromGameOver || ComingFromPause)
+                    /*if (ComingFromGameOver || ComingFromPause)
                     {
                         ClearClips();
                         SwitchMusic(RefAudioSource1, TitleMusic);
@@ -67,6 +67,19 @@ public class MusicManager : MonoBehaviour
                         ComingFromGameOver = false;
                         ComingFromPause = false;
                         break;
+                    }*/
+                    if (ComingFromGameOver)
+                    {
+                        ClearClips();
+                        SwitchMusic(RefAudioSource1, TitleMusic);
+                        StartCoroutine(StartFade(RefAudioSource1, CrossfadeDuration, TitleMusicVolume));
+                        ComingFromGameOver = false;
+                        break;
+                    }
+                    else if (ComingFromPause)
+                    {
+                        Crossfade(TitleMusic, TitleMusicVolume);
+                        ComingFromPause = false;
                     }
 
                     //Crossfade(TitleMusic, TitleMusicVolume);
