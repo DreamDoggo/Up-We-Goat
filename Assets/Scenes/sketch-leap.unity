@@ -9634,7 +9634,7 @@ PrefabInstance:
       objectReference: {fileID: 789394980}
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: ConqueredDeath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: Loop
