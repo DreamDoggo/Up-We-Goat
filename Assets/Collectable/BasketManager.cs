@@ -37,6 +37,7 @@ public class BasketManager : MonoBehaviour
         //float startValue = ShrinkModifier;
         StartPosition = transform.position;
         //Vector2 startScale = transform.localScale;
+        transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.forward);
         image.color = Opaque;
 
         while (time < AnimationDuration)
@@ -54,6 +55,7 @@ public class BasketManager : MonoBehaviour
     {
         image.color = Transparent;
         transform.position = StartPosition;
+        transform.rotation = Quaternion.identity;
     }
 
     public void ConvertCollectableToImage(GameObject collectable) 
