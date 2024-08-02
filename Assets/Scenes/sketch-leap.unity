@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -8075,7 +8075,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -104.8, y: -36.4}
-  m_SizeDelta: {x: 42.406708, y: 40.583405}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1663456148
 MonoBehaviour:
@@ -8114,7 +8114,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
+    m_HighlightedColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -8180,8 +8180,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 00c83f55742481c47a6d9ad66ca5980b, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9193,9 +9193,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: DeathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 132b5d803c6a9dc409bc6e631c7b21b8, type: 3}
+    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: CollectionText
       value: 
       objectReference: {fileID: 789394980}
+    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: TimeBeforeDeath
+      value: 2.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374700260551256411, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_Volume
+      value: 0.225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374700260551256411, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 132b5d803c6a9dc409bc6e631c7b21b8, type: 3}
+    - target: {fileID: 1374700260551256411, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3941000375643947615, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Name
       value: Player
