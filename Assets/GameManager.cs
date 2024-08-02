@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
@@ -90,7 +91,6 @@ public class GameManager : MonoBehaviour
             default:
                 Debug.Log("Placing Level 1");
                 PlacePlatformsInRange(PlatformSpawnLocations[0].position, PlatformSpawnLocations[1].position.y, LevelOnePlatforms, LevelOnePlatformChances);
-                SpawnRocks();
                 break;
             case 2:
                 Debug.Log("Placing Level 2");
@@ -158,20 +158,11 @@ public class GameManager : MonoBehaviour
         while (platformsPlaced < InfinitePlatformIncrement)
         {
             // Spawn a platform based on how common it is
-            int randomInt = Random.Range(1, 101);
-
-            for (int i = 0; i < LevelFourPlatforms.Length; i++)
-            {
-                if (randomInt <= LevelFourPlatformChances[i])
-                {
-                    spawnPosition.x = Random.Range(-5f, 5f);
-                    spawnPosition.y += PlatformSpawnHeight;
-                    GameObject platformSpawned = Instantiate(LevelFourPlatforms[i], spawnPosition, Quaternion.identity);
-                    PlaceCollectable(CollectablePrefab[LevelManager.Level - 1], platformSpawned);
-                    platformsPlaced++;
-                    break;
-                }
-            }
+            spawnPosition.x = Random.Range(-5f, 5f);
+            spawnPosition.y += PlatformSpawnHeight;
+            GameObject platformSpawned = Instantiate(LevelFourPlatforms[GetRandomWeightedIndex(LevelFourPlatformChances)], spawnPosition, Quaternion.identity);
+            PlaceCollectable(CollectablePrefab[LevelManager.Level - 1], platformSpawned);
+            platformsPlaced++;
         }
         NextInfiniteSpawnPosition = spawnPosition;
         return;
@@ -186,13 +177,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Obstacles
-    public void SpawnRocks() { }
-    public void SpawnSnowballs() { }
-    public void SpawnAvalance() { }
-    public void SpawnBirds() { }
-    public void SpawnWind() { }
-    public void Snow(){
+    public int GetRandomWeightedIndex(int[] weights)
+    {
+        // Get the total sum of all the weights.
+        float weightSum = 0f;
+        for (int i = 0; i < weights.Length; ++i)
+        {
+            weightSum += weights[i];
+        }
+
+        // Step through all the possibilities, one by one, checking to see if each one is selected.
+        int index = 0;
+        int lastIndex = weights.Length - 1;
+        while (index < lastIndex)
+        {
+            // Do a probability check with a likelihood of weights[index] / weightSum.
+            if (Random.Range(0, weightSum) < weights[index])
+            {
+                return index;
+            }
+
+            // Remove the last item from the sum of total untested weights and try again.
+            weightSum -= weights[index++];
+        }
+        return GetRandomWeightedIndex(weights);
+    }
+
+        // Obstacles
+    
+    public void Snow()
+    {
         if(snow.activeSelf == false){
             snow.SetActive(true);   
         } else {
