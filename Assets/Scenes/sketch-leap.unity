@@ -9500,8 +9500,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_Pitch
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Volume
-      value: 0.306
+      value: 0.613
       objectReference: {fileID: 0}
     - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_audioClip
