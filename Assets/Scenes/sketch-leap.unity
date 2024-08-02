@@ -9195,7 +9195,7 @@ PrefabInstance:
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: LandSFX
       value: 
-      objectReference: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
+      objectReference: {fileID: 8300000, guid: 4ee5b9a2af98ca645bbbc352147a5a51, type: 3}
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: DeathSFX
       value: 
@@ -9222,12 +9222,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Volume
-      value: 0.75
+      value: 0.481
       objectReference: {fileID: 0}
     - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
+      objectReference: {fileID: 8300000, guid: 4ee5b9a2af98ca645bbbc352147a5a51, type: 3}
     - target: {fileID: 3941000375643947615, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Name
       value: Player
