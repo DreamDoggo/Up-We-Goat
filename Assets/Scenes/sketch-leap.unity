@@ -1051,9 +1051,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -9193,6 +9193,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: LandSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
+    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: DeathSFX
       value: 
       objectReference: {fileID: 8300000, guid: 132b5d803c6a9dc409bc6e631c7b21b8, type: 3}
@@ -9216,6 +9220,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_Volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 637fd172e4c67bd4f9d9996550b597c4, type: 3}
     - target: {fileID: 3941000375643947615, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Name
       value: Player
