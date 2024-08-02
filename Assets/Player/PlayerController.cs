@@ -61,9 +61,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource JumpSource;
     [SerializeField] AudioSource DeathSource;
     [SerializeField] AudioSource LandSource;
-    [SerializeField] GameObject[] JumpParticle = new GameObject[2]; 
+    [SerializeField] GameObject[] JumpParticle = new GameObject[2];
 
+    [Space(10)]
     [Header("Misc")]
+    [Tooltip("Use for testing without having to worry about dying")]
+    [SerializeField] bool ConqueredDeath = false;
     [Tooltip("How many collectable thingies the player has collected")]
     [SerializeField] public static int collectables = 0;
     [Tooltip("How much time it takes for the player to die")]
@@ -321,13 +324,16 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Death()
     {
-        isDead = true;
-        RefAnimator.SetTrigger("Die");
-        DeathSource.PlayOneShot(DeathSFX);
-        yield return new WaitForSeconds(TimeBeforeDeath);
-        collectables = 0;
-        RefAnimator.ResetTrigger("Die");
-        SceneManager.LoadScene("GameOver");
+        if (ConqueredDeath == false) 
+        {
+            isDead = true;
+            RefAnimator.SetTrigger("Die");
+            DeathSource.PlayOneShot(DeathSFX);
+            yield return new WaitForSeconds(TimeBeforeDeath);
+            collectables = 0;
+            RefAnimator.ResetTrigger("Die");
+            SceneManager.LoadScene("GameOver");
+        }
         yield return null;
     }
 }

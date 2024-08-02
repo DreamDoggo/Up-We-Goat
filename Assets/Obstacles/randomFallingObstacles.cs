@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class randomFallingObstacles : MonoBehaviour
@@ -29,6 +30,8 @@ public class randomFallingObstacles : MonoBehaviour
     [Range(50f, 300f)]
     [SerializeField] float MeteorMoveSpeed = 100f;
     [SerializeField] float LeftXSpawnPosition = -8f;
+    [Tooltip("Time in seconds between meteor spawns")]
+    [SerializeField] float MeteorTimer = 5;
 
     void Start(){
         levelman = FindFirstObjectByType<LevelManager>();
@@ -67,7 +70,7 @@ public class randomFallingObstacles : MonoBehaviour
 
     void SpawnMeteor() 
     {
-        if (timer >= DropTimer) 
+        if (timer >= MeteorTimer) 
         {
             GameObject spawnedMeteor;
             if (Random.Range(1, 3) == 1)

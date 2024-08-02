@@ -643,6 +643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09be44cad3ca58b4db3bdaf5335e2aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  textForDeathScreen: {fileID: 0}
+  congratsText: {fileID: 0}
 --- !u!1 &1695387180
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +913,7 @@ MonoBehaviour:
     Programmer
     - Greg & Wyatt
 
-    Auido - Rishi & Rowan
+    Audio - Rishi & Rowan
 
     Art- Rasa'
 --- !u!222 &2111314267

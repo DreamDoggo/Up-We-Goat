@@ -221,7 +221,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40.582905, y: 1}
+  m_Size: {x: 70, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &188873319
 MonoBehaviour:
@@ -7346,6 +7346,7 @@ MonoBehaviour:
   MeteorMaxDistanceFromPlayer: 8
   MeteorMoveSpeed: 300
   LeftXSpawnPosition: -10
+  MeteorTimer: 4
 --- !u!114 &1484269314
 MonoBehaviour:
   m_ObjectHideFlags: 0
