@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefCamera: {fileID: 419896957}
-  TransitionVolume: 1
+  TransitionVolume: 0.25
   TransitionAudio: {fileID: 8300000, guid: e7af3cc2b0ec17843bc8a8e52dcbc753, type: 3}
 --- !u!82 &1445791570
 AudioSource:
@@ -7809,7 +7809,7 @@ MonoBehaviour:
   RefPlayer: {fileID: 1441368690}
   AvalancheSpawnTime: 10
   MinX: -5
-  MaxX: 5
+  MaxX: 7.1
   DistanceFromPlayer: 8
 --- !u!1 &1537031151
 GameObject:
@@ -8128,8 +8128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefCamera: {fileID: 419896957}
-  TransitionVolume: 1
-  TransitionAudio: {fileID: 0}
+  TransitionVolume: 0.25
+  TransitionAudio: {fileID: 8300000, guid: e7af3cc2b0ec17843bc8a8e52dcbc753, type: 3}
 --- !u!1 &1636981943
 GameObject:
   m_ObjectHideFlags: 0
@@ -8478,7 +8478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefCamera: {fileID: 419896957}
-  TransitionVolume: 1
+  TransitionVolume: 0.25
   TransitionAudio: {fileID: 8300000, guid: e7af3cc2b0ec17843bc8a8e52dcbc753, type: 3}
 --- !u!4 &1696997810
 Transform:
@@ -9503,9 +9503,13 @@ PrefabInstance:
       propertyPath: CollectionText
       value: 
       objectReference: {fileID: 789394980}
+    - target: {fileID: 241689705442690403, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
+      propertyPath: ConqueredDeath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_Volume
-      value: 0.569
+      value: 0.306
       objectReference: {fileID: 0}
     - target: {fileID: 3046857332017385610, guid: 0faea7ee889d33642b0202edc0ba32fe, type: 3}
       propertyPath: m_audioClip
