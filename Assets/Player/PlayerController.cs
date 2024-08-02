@@ -332,7 +332,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Death()
     {
-        if (ConqueredDeath == false) 
+        if (ConqueredDeath == false && !isDead) 
         {
             isDead = true;
             RefAnimator.SetTrigger("Die");

@@ -19,6 +19,15 @@ public class MenuButtons : MonoBehaviour
     public void debugResetHighscore(){
         PlayerPrefs.SetInt("highscore", 0);
     }
+
+    public void CheckToUpdateHighScore() 
+    {
+        if (PlayerController.collectables > PlayerPrefs.GetInt("highscore")) 
+        {
+            PlayerPrefs.SetInt("highscore", PlayerController.collectables);
+        }
+    }
+
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "MainMenu") 
